@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <meta name="generator" content="Astro v1.6.11" />
+
+        <title>Guillermo Medel</title>
+        <meta name="description" content="I'm Guillermo Medel, a software engineer from Mexico. I'm passionate about building things for the web." />
+
+        <!-- social media -->
+        <meta property="og:title" content="Guillermo Medel" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="I'm Guillermo Medel, a software engineer from Mexico. I'm passionate about building things for the web." />
+        <meta property="og:url" content="https://guillermomedel.com/" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <!-- initialize theme -->
+        <script>
+            const themeSaved = localStorage.getItem("theme");
+
+            if (themeSaved) {
+                document.documentElement.dataset.theme = themeSaved;
+            } else {
+                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+            }
+
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+                if (!localStorage.getItem("theme")) {
+                    document.documentElement.dataset.theme = event.matches ? "dark" : "light";
+                }
+            });
+        </script>
+        <link rel="stylesheet" href="/assets/blog.4e0a45fb.css" />
+        <link rel="stylesheet" href="/assets/btn.2c98e744.css" />
+        <link rel="stylesheet" href="/assets/index.5f90e168.css" />
+        <script type="module" src="/hoisted.3ced2b30.js"></script>
+    </head>
+    <body class="h-screen overflow-x-hidden snap-y snap-mandatory relative text-default text-base selection:bg-secondary selection:text-white">
+        <header id="page-header" class="absolute top-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white astro-NZK43K3M">
+            <a href="/" class="astro-NZK43K3M">
+                <img class="sm:w-12 w-10 h-10 sm:h-12 astro-NZK43K3M" src="/assets/logo.png" alt="GM Logo" />
+            </a>
+            <div class="astro-NZK43K3M">
+                <div class="flex items-center gap-6 astro-NZK43K3M">
+                    <nav class="hidden sm:block astro-NZK43K3M">
+                        <ul class="flex items-center gap-6 px-8 astro-NZK43K3M">
+                            <li class="astro-NZK43K3M">
+                                <a class="text-sm nav astro-NZK43K3M" href="#about">
+                                    About Me
+                                </a>
+                            </li>
+                            <li class="astro-NZK43K3M">
+                                <a class="text-sm nav astro-NZK43K3M" href="#skills">
+                                    My Skills
+                                </a>
+                            </li>
+                            <li class="astro-NZK43K3M">
+                                <a class="text-sm nav astro-NZK43K3M" href="#blog">
+                                    Blog
+                                </a>
+                            </li>
+                            <li class="astro-NZK43K3M">
+                                <a class="text-sm nav astro-NZK43K3M" href="#work">
+                                    My Work
+                                </a>
+                            </li>
+                            <li class="astro-NZK43K3M">
+                                <a class="text-sm nav astro-NZK43K3M" href="#contact">
+                                    Contact Me
+                                </a>
+                            </li>
+                        </ul>
+                        <button id="open-nav-button" type="button" class="btn sm:hidden astro-NZK43K3M" aria-label="Navigation">
+                            <svg viewBox="0 0 24 24" class="h-8 astro-NZK43K3M" astro-icon="mdi:menu"><path fill="currentColor" d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z" /></svg>
+                        </button>
+                    </nav>
+
+                    <!--
+  negative margin is sum of button width (8) and gap size of flex parent (6)
+  TODO don't hardcode these values
+-->
+                    <button id="theme-switcher" type="button" class="-ml-14 origin-[right_center] scale-0 transition-all duration-500 astro-KOS34MNN">
+                        <div id="icon-theme-light" class="astro-KOS34MNN">
+                            <svg viewBox="0 0 512 512" class="h-8 astro-KOS34MNN" astro-icon="theme/light">
+                                <defs>
+                                    <linearGradient id="astroicon:theme/lighta" x1="149.99" x2="234.01" y1="119.24" y2="264.76" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" stop-color="currentColor" />
+                                        <stop offset=".45" stop-color="currentColor" />
+                                        <stop offset="1" stop-color="currentColor" />
+                                    </linearGradient>
+                                    <symbol id="astroicon:theme/lightb" viewBox="0 0 384 384">
+                                        <circle cx="192" cy="192" r="84" fill="url(#astroicon:theme/lighta)" stroke="currentColor" stroke-miterlimit="10" stroke-width="6" />
+                                        <path
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-linecap="round"
+                                            stroke-miterlimit="10"
+                                            stroke-width="24"
+                                            d="M192 61.66V12m0 360v-49.66m92.17-222.51 35.11-35.11M64.72 319.28l35.11-35.11m0-184.34L64.72 64.72m254.56 254.56-35.11-35.11M61.66 192H12m360 0h-49.66"
+                                        >
+                                            <animateTransform additive="sum" attributeName="transform" dur="6s" repeatCount="indefinite" type="rotate" values="0 192 192; 45 192 192" />
+                                        </path>
+                                    </symbol>
+                                </defs>
+                                <use xlink:href="#astroicon:theme/lightb" width="384" height="384" transform="translate(64 64)" />
+                            </svg>
+                            <span class="sr-only astro-KOS34MNN">Use light theme</span>
+                        </div>
+                        <div id="icon-theme-dark" class="hidden astro-KOS34MNN">
+                            <svg viewBox="0 0 512 512" class="h-8 astro-KOS34MNN" astro-icon="theme/dark">
+                                <defs>
+                                    <linearGradient id="astroicon:theme/darkb" x1="54.33" x2="187.18" y1="29.03" y2="259.13" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" stop-color="currentColor" />
+                                        <stop offset=".45" stop-color="currentColor" />
+                                        <stop offset="1" stop-color="currentColor" />
+                                    </linearGradient>
+                                    <linearGradient id="astroicon:theme/darka" x1="294" x2="330" y1="112.82" y2="175.18" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" stop-color="currentColor" />
+                                        <stop offset=".45" stop-color="currentColor" />
+                                        <stop offset="1" stop-color="currentColor" />
+                                    </linearGradient>
+                                    <linearGradient xlink:href="#astroicon:theme/darka" id="astroicon:theme/darkc" x1="295.52" x2="316.48" y1="185.86" y2="222.14" />
+                                    <linearGradient xlink:href="#astroicon:theme/darka" id="astroicon:theme/darkd" x1="356.29" x2="387.71" y1="194.78" y2="249.22" />
+                                    <symbol id="astroicon:theme/darke" overflow="visible" viewBox="0 0 270 270">
+                                        <path
+                                            fill="url(#astroicon:theme/darkb)"
+                                            stroke="currentColor"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="6"
+                                            d="M252.25 168.63C178.13 168.63 118 109.35 118 36.21A130.48 130.48 0 0 1 122.47 3C55.29 10.25 3 66.37 3 134.58 3 207.71 63.09 267 137.21 267 199.69 267 252 224.82 267 167.79a135.56 135.56 0 0 1-14.75.84Z"
+                                        >
+                                            <animateTransform additive="sum" attributeName="transform" dur="6s" repeatCount="indefinite" type="rotate" values="-15 135 135; 9 135 135; -15 135 135" />
+                                        </path>
+                                    </symbol>
+                                </defs>
+                                <path
+                                    fill="url(#astroicon:theme/darka)"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="m282.83 162.84 24.93-6.42a1.78 1.78 0 0 1 1.71.46l18.37 18a1.8 1.8 0 0 0 3-1.73l-6.42-24.93a1.78 1.78 0 0 1 .46-1.71l18-18.37a1.8 1.8 0 0 0-1.73-3l-24.93 6.42a1.78 1.78 0 0 1-1.71-.46l-18.37-18a1.8 1.8 0 0 0-3 1.73l6.42 24.93a1.78 1.78 0 0 1-.46 1.71l-18 18.37a1.8 1.8 0 0 0 1.73 3Z"
+                                >
+                                    <animateTransform
+                                        additive="sum"
+                                        attributeName="transform"
+                                        calcMode="spline"
+                                        dur="6s"
+                                        keySplines=".42, 0, .58, 1; .42, 0, .58, 1"
+                                        repeatCount="indefinite"
+                                        type="rotate"
+                                        values="-15 312 144; 15 312 144; -15 312 144"
+                                    />
+                                    <animate attributeName="opacity" dur="6s" values="1; .75; 1; .75; 1; .75; 1" />
+                                </path>
+                                <path
+                                    fill="url(#astroicon:theme/darkc)"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="m285.4 193.44 12 12.25a1.19 1.19 0 0 1 .3 1.14l-4.28 16.62a1.2 1.2 0 0 0 2 1.15l12.25-12a1.19 1.19 0 0 1 1.14-.3l16.62 4.28a1.2 1.2 0 0 0 1.15-2l-12-12.25a1.19 1.19 0 0 1-.3-1.14l4.28-16.62a1.2 1.2 0 0 0-2-1.15l-12.25 12a1.19 1.19 0 0 1-1.14.3l-16.62-4.28a1.2 1.2 0 0 0-1.15 2Z"
+                                >
+                                    <animateTransform
+                                        additive="sum"
+                                        attributeName="transform"
+                                        begin="-.33s"
+                                        calcMode="spline"
+                                        dur="6s"
+                                        keySplines=".42, 0, .58, 1; .42, 0, .58, 1"
+                                        repeatCount="indefinite"
+                                        type="rotate"
+                                        values="-15 306 204; 15 306 204; -15 306 204"
+                                    />
+                                    <animate attributeName="opacity" begin="-.33s" dur="6s" values="1; .75; 1; .75; 1; .75; 1" />
+                                </path>
+                                <path
+                                    fill="url(#astroicon:theme/darkd)"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="m337.32 223.73 24.8 6.9a1.83 1.83 0 0 1 1.25 1.25l6.9 24.8a1.79 1.79 0 0 0 3.46 0l6.9-24.8a1.83 1.83 0 0 1 1.25-1.25l24.8-6.9a1.79 1.79 0 0 0 0-3.46l-24.8-6.9a1.83 1.83 0 0 1-1.25-1.25l-6.9-24.8a1.79 1.79 0 0 0-3.46 0l-6.9 24.8a1.83 1.83 0 0 1-1.25 1.25l-24.8 6.9a1.79 1.79 0 0 0 0 3.46Z"
+                                >
+                                    <animateTransform
+                                        additive="sum"
+                                        attributeName="transform"
+                                        begin="-.67s"
+                                        calcMode="spline"
+                                        dur="6s"
+                                        keySplines=".42, 0, .58, 1; .42, 0, .58, 1"
+                                        repeatCount="indefinite"
+                                        type="rotate"
+                                        values="-15 372 222; 15 372 222; -15 372 222"
+                                    />
+                                    <animate attributeName="opacity" begin="-.67s" dur="6s" values="1; .75; 1; .75; 1; .75; 1" />
+                                </path>
+                                <use xlink:href="#astroicon:theme/darke" width="270" height="270" transform="translate(121 121)" />
+                            </svg>
+                            <span class="sr-only astro-KOS34MNN">Use dark theme</span>
+                        </div>
+                    </button>
+                </div>
+                <div id="menu-modal" class="modal hidden astro-NZK43K3M" aria-hidden="true">
+                    <div class="fixed inset-0 bg-default px-8 py-4 text-default astro-NZK43K3M">
+                        <div class="space-y-4 astro-NZK43K3M" role="dialog" aria-modal="true">
+                            <header class="text-right astro-NZK43K3M">
+                                <button id="close-nav-button" type="button" class="btn astro-NZK43K3M" aria-label="Close navigation">
+                                    <svg viewBox="0 0 24 24" class="h-8 astro-NZK43K3M" astro-icon="mdi:close">
+                                        <path fill="currentColor" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                                    </svg>
+                                </button>
+                            </header>
+                            <div class="flex justify-center astro-NZK43K3M">
+                                <svg fill="none" stroke="currentColor" stroke-width="1.5" class="h-16 astro-NZK43K3M" viewBox="0 0 24 24" astro-icon="logomark">
+                                    <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" />
+                                </svg>
+                            </div>
+                            <nav class="astro-NZK43K3M">
+                                <ul class="flex flex-col astro-NZK43K3M">
+                                    <li class="astro-NZK43K3M">
+                                        <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#about">
+                                            About Me
+                                        </a>
+                                    </li>
+                                    <li class="astro-NZK43K3M">
+                                        <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#skills">
+                                            My Skills
+                                        </a>
+                                    </li>
+                                    <li class="astro-NZK43K3M">
+                                        <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#blog">
+                                            Blog
+                                        </a>
+                                    </li>
+                                    <li class="astro-NZK43K3M">
+                                        <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#work">
+                                            My Work
+                                        </a>
+                                    </li>
+                                    <li class="astro-NZK43K3M">
+                                        <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#contact">
+                                            Contact Me
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <noscript>
+            <style>
+                #open-nav-button {
+                    display: none;
+                }
+            </style>
+        </noscript>
+
+        <div id="starfield" class="fixed h-screen w-full -z-10 top-0 left-0 inset-0">
+            <canvas id="starfield-canvas"></canvas>
+        </div>
+
+        <section class="relative h-screen snap-center astro-WH6QYF6X">
+            <div class="relative grid h-full place-items-center justify-center astro-WH6QYF6X">
+                <h2 class="flex flex-col gap-2 self-auto sm:gap-4 sm:justify-self-end astro-WH6QYF6X">
+                    <div class="text-center font-extrabold tracking-tighter text-6xl astro-WH6QYF6X">
+                        <span class="fade-in text-8xl gradient-text astro-WH6QYF6X">
+                            Hi, I'm Moe
+                        </span>
+
+                        <br class="astro-WH6QYF6X" />
+                        <br class="astro-WH6QYF6X" />
+                        <span id="myJob" class="fade-in-delay text-white astro-WH6QYF6X">
+                            Front End Dev 🖥
+                        </span>
+                    </div>
+                </h2>
+            </div>
+        </section>
+
+        <section id="" class="flex scroll-mt-24 flex-col items-center gap-4 space-y-8 min-h-screen place-items-center justify-center">
+            <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl"></h2>
+            <section id="about" class="h-screen w-full max-w-6xl place-items-center justify-center snap-center gradient-text text-center font-extrabold tracking-tight text-4xl grid grid-cols-1 md:grid-cols-2">
+                <span class="text-white bg-white bg-opacity-10 py-8 px-8 flex flex-col">
+                    <span class="w-full text-6xl gradient-text">Who am I?</span>
+                    <span class="mt-12 text-xl inView">
+                        I'm a developer from <span>Sonora</span> <span class="gradient-text-mexican">Mexico</span> 🌵. Currently I'm spending the winter in <span class="gradient-text-canada">Vancouver Canada. </span> I work as a
+                        <span class="text-primary">Frontend Developer</span> for <span class="text-primary">Astrazeneca.</span> My mission is to create <span class="text-primary">beautiful</span> and
+                        <span class="text-primary">functional</span> web applications using the right tools for the job.
+                    </span>
+                </span>
+
+                <img class="mx-auto hidden md:block inView avatar rounded shadow-lg shadow-[var(--color-primary)]" src="/assets/ai-me.webp" alt="My profile pic" />
+            </section>
+        </section>
+        <section id="skills" class="flex scroll-mt-24 flex-col items-center gap-4 space-y-8 min-h-screen place-items-center justify-center">
+            <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl">
+                My Skills
+            </h2>
+            <div class="relative border bg-white bg-opacity-10 w-full border-default max-w-6xl pt-8 px-6 md:pt-24 astro-VI2QVZCH">
+                <ul class="grid grid-cols-2 text-white gap-12 pb-8 md:pb-16 md:gap-20 sm:grid-cols-3 md:grid-cols-6 astro-VI2QVZCH">
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 32 32" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/react">
+                                <g fill="none" fill-rule="evenodd" transform="translate(.648 2.438) scale(.05696)">
+                                    <circle cx="269.529" cy="237.628" r="50.167" fill="#00d8ff" />
+                                    <g stroke="#00d8ff" stroke-width="24">
+                                        <path
+                                            d="M269.53 135.628c67.356 0 129.928 9.665 177.107 25.907 56.844 19.57 91.794 49.233 91.794 76.093 0 27.99-37.04 59.503-98.083 79.728-46.15 15.29-106.88 23.272-170.818 23.272-65.554 0-127.63-7.492-174.3-23.44C36.184 297.006.62 265.085.62 237.628c0-26.642 33.37-56.076 89.415-75.616 47.355-16.51 111.472-26.384 179.486-26.384z"
+                                        />
+                                        <path
+                                            d="M180.736 186.922c33.65-58.348 73.28-107.724 110.92-140.48C337.006 6.976 380.163-8.48 403.43 4.937c24.248 13.983 33.042 61.814 20.067 124.796-9.8 47.618-33.234 104.212-65.176 159.6-32.75 56.788-70.25 106.82-107.377 139.272-46.98 41.068-92.4 55.93-116.185 42.213-23.08-13.3-31.906-56.92-20.834-115.233 9.355-49.27 32.832-109.745 66.8-168.664z"
+                                        />
+                                        <path
+                                            d="M180.82 289.482c-33.745-58.282-56.72-117.287-66.31-166.255-11.544-59-3.382-104.11 19.864-117.566 24.224-14.024 70.055 2.244 118.14 44.94 36.356 32.28 73.688 80.837 105.723 136.173 32.844 56.733 57.46 114.21 67.036 162.582 12.117 61.213 2.31 107.984-21.453 121.74-23.057 13.348-65.25-.784-110.24-39.5-38.013-32.71-78.682-83.253-112.76-142.115z"
+                                        />
+                                    </g>
+                                </g>
+                            </svg>
+                            <span class="astro-VI2QVZCH">React</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg aria-label="Vue" viewBox="0 0 64 64" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/vue">
+                                <path fill="#42b883" d="M39.333 5.5 32 18.333 24.667 5.5H0L32 61 64 5.5Z" />
+                                <path fill="#35495e" d="M39.333 5.5 32 18.333 24.667 5.5H12.833L32 38.833 51.167 5.5Z" />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Vue</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg id="svg22" version="1.1" viewBox="0 0 64 64" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/nuxt">
+                                <defs id="defs4" />
+                                <g id="g862" transform="translate(-12.87 -44.132) scale(2.53772)">
+                                    <path
+                                        id="path12"
+                                        fill="#00c492"
+                                        stroke-width=".5"
+                                        d="M12.738 38.729a.937.937 0 0 1-.05-.103 1.314 1.314 0 0 1-.09-.74H6.638l8.86-15.593 2.909 5.113.843-1.492-2.535-4.467a1.55 1.55 0 0 0-1.238-.817 1.378 1.378 0 0 0-1.2.827L5.298 37.24a1.587 1.587 0 0 0-.078 1.49 1.381 1.381 0 0 0 1.313.633h7.518a1.378 1.378 0 0 1-1.314-.633z"
+                                        class="cls-3"
+                                    />
+                                    <path
+                                        id="path14"
+                                        fill="#008776"
+                                        stroke-width=".5"
+                                        d="m30.023 37.239-7.376-12.994a1.554 1.554 0 0 0-1.243-.827 1.374 1.374 0 0 0-1.2.825l-.955 1.67.85 1.493 1.313-2.325 7.297 12.804h-2.775a1.243 1.243 0 0 1-.058.631.8.8 0 0 1-.057.129l-.024.047a1.588 1.588 0 0 1-1.338.67h4.341a1.586 1.586 0 0 0 1.338-.67 1.378 1.378 0 0 0-.113-1.453z"
+                                        class="cls-4"
+                                    />
+                                    <path
+                                        id="path16"
+                                        fill="#2d4a5d"
+                                        stroke-width=".5"
+                                        d="m25.795 38.692.024-.047a.8.8 0 0 0 .057-.129 1.243 1.243 0 0 0 .058-.63 1.92 1.92 0 0 0-.242-.647l-5.588-9.833-.854-1.492-.849 1.492-5.586 9.833a1.99 1.99 0 0 0-.216.647 1.314 1.314 0 0 0 .082.74.928.928 0 0 0 .05.103 1.381 1.381 0 0 0 1.313.633H24.45a1.592 1.592 0 0 0 1.345-.67zM19.249 28.9l5.109 8.986H14.144Z"
+                                        class="cls-5"
+                                    />
+                                </g>
+                            </svg>
+                            <span class="astro-VI2QVZCH">Nuxt</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 32 32" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/angular">
+                                <path fill="#e23237" d="M1 5.3 15.892 0l15.284 5.218-2.47 19.694L15.892 32 3.286 25.004 1 5.3z" />
+                                <path fill="#b52e31" d="M31.176 5.218 15.892 0v32l12.814-7.088 2.47-19.694z" />
+                                <path fill="#fff" d="m15.915 3.74-9.28 20.64 3.463-.07 1.87-4.664h8.3l2.032 4.7 3.302.07L15.915 3.74zm.023 6.626 3.14 6.557H13.2l2.747-6.557z" />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Angular</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg xml:space="preserve" id="Layer_1" x="0" y="0" version="1.1" viewBox="0 0 64 64" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/ionic">
+                                <g id="g12" transform="matrix(.43537 0 0 .43537 -16.631 -79.369)">
+                                    <path id="path4" fill="#3880ff" d="M111.8 222.5c-18.5 0-33.5 15-33.5 33.5s15 33.5 33.5 33.5 33.5-15 33.5-33.5c-.1-18.5-15.1-33.5-33.5-33.5z" class="st0" />
+                                    <g id="g8"><circle id="circle6" cx="159.8" cy="210.2" r="15.3" fill="#3880ff" class="st0" /></g>
+                                    <path
+                                        id="path10"
+                                        fill="#3880ff"
+                                        d="m178.6 225.5-.6-1.4-1 1.2c-2.5 2.8-5.7 5-9.2 6.3l-1 .4.4 1c3.1 7.3 4.6 15.1 4.6 23 0 33.1-26.9 60.1-60.1 60.1s-60-27-60-60.1 26.9-60.1 60.1-60.1c9 0 17.6 2 25.7 5.8l.9.4.4-1c1.5-3.5 3.8-6.5 6.8-8.9l1.2-1-1.4-.7c-10.5-5.4-21.8-8.2-33.7-8.2-40.5 0-73.5 33-73.5 73.5s33 73.5 73.5 73.5 73.5-33 73.5-73.5c0-10.4-2.2-20.6-6.6-30.3z"
+                                        class="st0"
+                                    />
+                                </g>
+                            </svg>
+                            <span class="astro-VI2QVZCH">Ionic</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 64 64" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/tailwind">
+                                <defs>
+                                    <linearGradient id="astroicon:frameworks/tailwinda" x1="0" x2="64" y1="-21.333" y2="85.333" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#2383ae" />
+                                        <stop offset="100%" stop-color="#6dd7b9" />
+                                    </linearGradient>
+                                </defs>
+                                <path
+                                    fill="url(#astroicon:frameworks/tailwinda)"
+                                    fill-rule="evenodd"
+                                    d="M16 25.6c2.133-8.533 7.467-12.8 16-12.8 12.8 0 14.4 9.6 20.8 11.2 4.267 1.067 8-.533 11.2-4.8C61.867 27.733 56.533 32 48 32c-12.8 0-14.4-9.6-20.8-11.2-4.267-1.067-8 .533-11.2 4.8zM0 44.8C2.133 36.267 7.467 32 16 32c12.8 0 14.4 9.6 20.8 11.2 4.267 1.067 8-.533 11.2-4.8-2.133 8.533-7.467 12.8-16 12.8-12.8 0-14.4-9.6-20.8-11.2-4.267-1.067-8 .533-11.2 4.8z"
+                                />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Tailwind CSS</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 16.933 16.933" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/nest">
+                                <path
+                                    fill="#ea2845"
+                                    fill-rule="evenodd"
+                                    d="M9.97.033c-.122 0-.236.026-.34.06a.97.97 0 0 1 .407.568c.004.03.013.052.017.083s.01.052.01.08c.018.385-.1.433-.184.66a.934.934 0 0 0 .06.86.52.52 0 0 0 .052.096c-.166-1.106.757-1.273.927-1.618.013-.302-.236-.503-.433-.643a.97.97 0 0 0-.516-.15zm1.39.25c-.018.1-.004.074-.01.127l-.01.114-.03.105c-.01.035-.022.07-.035.105l-.048.1c-.013.018-.022.035-.035.052l-.026.04-.066.087c-.026.026-.048.057-.08.08s-.052.052-.083.074c-.092.07-.197.122-.293.188-.03.022-.06.04-.087.066a.64.64 0 0 0-.083.07c-.03.026-.052.052-.08.083s-.048.057-.066.087l-.06.092-.048.1-.035.1-.03.11c-.004.018-.004.04-.01.057s-.004.035-.01.052l-.004.11c0 .026 0 .052.004.08 0 .035.004.07.013.11s.013.07.022.105l.035.105.03.06-1.006-.39-.507-.13-.276-.066a8.12 8.12 0 0 0-.796-.118c-.01 0-.013-.004-.022-.004l-.783-.04-.573.022a8.35 8.35 0 0 0-.8.096l-.197.035-.394.087-.197.052-.188.083-.144.066c-.01.004-.018.004-.022.01l-.122.06c-.013.004-.022.01-.03.013l-.136.07c-.03.013-.06.03-.087.044-.013.01-.03.017-.04.022l-.114.066a1.1 1.1 0 0 0-.105.066l-.087.06-.096.07-.074.06c-.01.004-.018.013-.026.018l-.066.057c-.004.01-.013.013-.018.018l-.08.074-.087.083-.074.08c-.01.01-.022.018-.03.026a1.23 1.23 0 0 1-.074.079c-.004.01-.013.013-.018.022l-.1.105-.236.227c-.08.07-.162.136-.245.192l-.262.166a2.41 2.41 0 0 1-.276.13 3.15 3.15 0 0 1-.284.105c-.184.04-.372.114-.534.127-.035 0-.074.01-.11.013l-.11.026-.105.04a1.12 1.12 0 0 0-.105.048c-.03.022-.066.04-.096.06s-.06.048-.087.074-.06.052-.087.08l-.074.087c-.022.035-.048.066-.066.1a.77.77 0 0 0-.061.101l-.048.114-.04.114-.022.105c-.013.052-.013.105-.018.13s0 .058 0 .089a.25.25 0 0 0 .004.057c.004.03.01.057.018.083l.03.08c.013.03.03.057.048.083l.057.08.074.07a.64.64 0 0 0 .083.07c.105.092.13.122.267.192.022.013.044.022.07.035.013.013.013.017.018.026.004.035.013.07.022.105a.59.59 0 0 0 .035.105l.035.08c.004.01.01.018.013.022l.052.096.066.092.074.083c.026.026.052.048.083.074l.087.066c.03.022.06.04.096.057a.71.71 0 0 0 .101.048c.026.013.057.022.087.03s.057.018.074.022c-.013.236-.018.46.018.538.04.087.232-.18.424-.485-.026.302-.044.656 0 .76s.31-.232.538-.608c3.1-.717 5.93 1.426 6.227 4.452-.057-.472-.638-.735-.905-.67-.13.324-.354.74-.713.997a2.83 2.83 0 0 0-.044-.875 2.83 2.83 0 0 1-.542 1.102c-.415.03-.83-.17-1.05-.472-.018-.013-.022-.04-.035-.057l-.035-.092c-.013-.03-.022-.06-.026-.092s-.004-.06-.004-.096v-.066c.004-.03.013-.06.022-.092l.03-.092c.018-.03.03-.06.052-.092.074-.2.074-.38-.06-.48a.502.502 0 0 0-.083-.044c-.018-.004-.04-.013-.057-.018l-.035-.013-.092-.022a.33.33 0 0 0-.092-.013.71.71 0 0 0-.096-.009c-.022 0-.044.004-.066.004a.34.34 0 0 0-.096.013l-.092.017-.092.03-.087.04-.083.044c-1.02.665-.41 2.22.284 2.672-.262.048-.53.105-.603.162.18.122.376.22.582.302l.708.2c.363.08.73.105 1.102.083a4.16 4.16 0 0 0 3.813-3.551l.026.114.04.245.018.118.01.13.01.144v.07c0 .022.004.048.004.07s-.004.052-.004.08v.06c0 .03-.004.057-.004.087 0 .017 0 .035-.004.057l-.004.096c-.004.013-.004.026-.004.04l-.013.1c0 .013 0 .026-.004.04l-.017.127v.01l-.026.122-.026.13-.035.136-.035.136-.044.14-.096.254-.052.127-.06.122c-.004.013-.01.022-.013.03a4.167 4.167 0 0 1-1.238 1.482c-.035.022-.07.048-.105.074-.01.01-.022.013-.03.022l-.096.066.013.026h.004l.184-.026h.004l.34-.06a.664.664 0 0 0 .096-.022l.06-.013.092-.017.08-.022a8.41 8.41 0 0 0 1.268-.42 6.993 6.993 0 0 1-2.716 2.217 7.163 7.163 0 0 0 1.49-.258 6.986 6.986 0 0 0 4.133-3.302 6.98 6.98 0 0 1-1.176 2.812c.424-.28.813-.603 1.168-.97a6.93 6.93 0 0 0 1.841-3.717c.15.69.192 1.404.127 2.108 3.157-4.404.262-8.97-.95-10.172-.004-.01-.01-.013-.01-.022-.01.052-.013.105-.017.157-.013.1-.026.197-.044.293s-.048.192-.074.29-.066.188-.105.28-.083.18-.13.267a2.98 2.98 0 0 1-.157.249 3.114 3.114 0 0 1-.18.236 3.27 3.27 0 0 1-.206.219c-.044.04-.083.074-.127.11l-.1.087a2.44 2.44 0 0 1-.245.171 3.03 3.03 0 0 1-.258.149 6.638 6.638 0 0 1-.276.122 3.08 3.08 0 0 1-.284.092c-.096.026-.197.048-.293.066s-.2.026-.297.035c-.07.004-.14.01-.2.01-.1 0-.2-.01-.297-.018s-.2-.022-.298-.044a2.21 2.21 0 0 1-.293-.074h-.004c.096-.01.192-.018.29-.035s.197-.04.293-.066.192-.057.284-.092.188-.08.276-.122a3.06 3.06 0 0 0 .262-.144c.083-.057.166-.114.245-.175a2.39 2.39 0 0 0 .223-.197c.074-.066.14-.14.206-.214s.127-.157.184-.236c.01-.013.018-.03.026-.044l.127-.2c.048-.087.092-.175.13-.267s.074-.184.105-.28.052-.188.074-.284.035-.197.044-.293.017-.2.017-.297c0-.07-.004-.14-.01-.2-.01-.1-.022-.197-.035-.293a3.2 3.2 0 0 0-.066-.293c-.03-.092-.06-.188-.096-.28s-.08-.184-.122-.27-.096-.175-.15-.258-.114-.162-.175-.24l-.2-.223a2.73 2.73 0 0 0-.114-.109 8.05 8.05 0 0 0-.608-.429 1.184 1.184 0 0 0-.087-.044 1.711 1.711 0 0 0-.415-.184z"
+                                />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Nest.js</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 32 32" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/github">
+                                <defs>
+                                    <clipPath id="astroicon:frameworks/githubd"><path d="M0 216h216V0H0v216z" /></clipPath>
+                                    <clipPath id="astroicon:frameworks/githubc">
+                                        <path
+                                            d="M121.724 55.66c.343 1.114.4 2.832-3.038 2.054 0 0-9.395-1.342-9.843-12.303l-.214-21h-2.258l-.213 21c-.448 10.96-9.842 12.303-9.842 12.303-3.428.778-3.383-.938-3.04-2.052-3.37 5.738-12.394 4.996-12.394 4.996-3.133-1.117-.224-3.13-.224-3.13 4.92-1.788 5.37-7.158 5.37-7.158V35.2l.52-11.728c1.117-5.224 3.874-8.312 6.578-10.13l28.803.033c3.484 2.365 7.047 6.846 7.047 15.307V50.37s.447 5.37 5.37 7.158c0 0 2.906 2.014-.225 3.13 0 0-.382.03-1.017.032-2.455 0-8.7-.47-11.378-5.03M94.53 34.04v16.552c0 1.617-.285 2.977-.773 4.12 3.24-2.526 3.457-8.855 3.457-8.855v-20.66c-3.225 2.282-2.684 8.846-2.684 8.846M117.8 45.86s.217 6.33 3.456 8.855c-.487-1.143-.772-2.503-.772-4.12V34.042s.54-6.1-2.684-8.612v20.43z"
+                                        />
+                                    </clipPath>
+                                    <clipPath id="astroicon:frameworks/githuba"><path d="M0 216h216V0H0v216z" /></clipPath>
+                                    <path id="astroicon:frameworks/githubb" d="M158.542 54.996c0-9.73-22.538-17.617-50.34-17.617s-50.34 7.887-50.34 17.617 22.537 17.62 50.34 17.62 50.34-7.9 50.34-17.62" />
+                                    <path id="astroicon:frameworks/githube" d="M75.282 93.676c0-.555-.65-1.006-1.454-1.006s-1.455.45-1.455 1.006.65 1.008 1.455 1.008 1.454-.45 1.454-1.008" />
+                                </defs>
+                                <g clip-path="url(#astroicon:frameworks/githuba)" transform="matrix(.17842 0 0 -.17792 -3.18 36.65)"><use xlink:href="#astroicon:frameworks/githubb" fill="#a0dcf2" /></g>
+                                <g clip-path="url(#astroicon:frameworks/githubc)" transform="matrix(.17842 0 0 -.17792 -3.18 36.65)"><use xlink:href="#astroicon:frameworks/githubb" fill="#82bde7" /></g>
+                                <g clip-path="url(#astroicon:frameworks/githubd)" transform="matrix(.17842 0 0 -.17792 -3.18 36.65)">
+                                    <path fill="#a0dcf2" d="m50.7 106.8-1.453-5.063s-.378-1.83 1.346-2.154c1.8.035 1.653 1.72 1.527 2.266l-1.42 4.95z" />
+                                    <path
+                                        fill="#292929"
+                                        d="m197.042 128.027.133.658c-14.768 2.953-29.922 2.983-39.1 2.602 1.506 5.426 1.96 11.67 1.96 18.633 0 9.986-3.752 17.975-9.843 24.054 1.065 3.435 2.487 11.066-1.42 20.833 0 0-6.9 2.188-22.476-8.243-6.106 1.526-12.604 2.28-19.112 2.28-7.16 0-14.395-.912-21.143-2.763-16.086 10.975-23.186 8.727-23.186 8.727-4.636-11.6-1.77-20.17-.9-22.302-5.448-5.88-8.774-13.384-8.774-22.585 0-6.947.792-13.178 2.724-18.594-9.247.336-23.85.207-38.1-2.64l.132-.658c14.325 2.865 29.018 2.965 38.2 2.617.425-1.12.9-2.2 1.43-3.26-9.088-.293-24.604-1.45-39.475-5.646l.182-.645c14.988 4.227 30.64 5.356 39.64 5.63 5.43-10.12 16.135-16.658 35.18-18.7-2.704-1.816-5.46-4.904-6.58-10.13-3.683-1.76-15.343-6.062-22.34 5.97 0 0-3.916 7.16-11.412 7.72 0 0-7.27.1-.503-4.53 0 0 4.867-2.293 8.223-10.9 0 0 4.38-14.695 25.512-9.98v-15.18s-.447-5.37-5.37-7.158c0 0-2.908-2.014.224-3.13 0 0 13.645-1.12 13.645 10.065v16.552s-.54 6.565 2.683 8.846V68.963s-.222-6.487-3.578-8.948c0 0-2.237-4.025 2.684-2.908 0 0 9.394 1.342 9.842 12.303l.214 27.513h2.257l.215-27.513c.447-10.96 9.842-12.303 9.842-12.303 4.92-1.117 2.683 2.908 2.683 2.908-3.355 2.46-3.578 8.948-3.578 8.948v26.953c3.223-2.5 2.684-8.612 2.684-8.612V70.752c0-11.184 13.644-10.065 13.644-10.065 3.13 1.117.225 3.13.225 3.13-4.922 1.8-5.37 7.158-5.37 7.158v21.697c0 8.46-3.563 12.942-7.047 15.307 20.3 2.014 30.056 8.572 34.548 18.762 8.896-.244 24.906-1.328 40.22-5.65l.182.645c-15.227 4.295-31.13 5.406-40.117 5.668.426 1.03.797 2.1 1.127 3.2 9.105.4 24.328.385 39.154-2.58"
+                                    />
+                                    <path
+                                        fill="#f5cdb5"
+                                        d="M140.178 150.4c4.375-3.963 6.934-8.75 6.934-13.905 0-24.075-17.948-24.728-40.085-24.728S66.94 115.09 66.94 136.485c0 5.122 2.524 9.878 6.845 13.825 7.206 6.578 19.404 3.095 33.24 3.095 13.782 0 25.934 3.518 33.15-3.015"
+                                    />
+                                    <path fill="#fff" d="M93.697 135.258c0-6.63-3.734-12.006-8.34-12.006s-8.342 5.375-8.342 12.006 3.736 12.004 8.342 12.004 8.34-5.373 8.34-12.004" />
+                                    <path fill="#b1645a" d="M91.02 135.107c0-4.42-2.5-8.002-5.56-8.002s-5.56 3.582-5.56 8.002 2.488 8.006 5.56 8.006 5.56-3.584 5.56-8.006" />
+                                    <path fill="#fff" d="M138.443 135.258c0-6.63-3.734-12.006-8.342-12.006s-8.34 5.375-8.34 12.006 3.735 12.004 8.34 12.004 8.342-5.373 8.342-12.004" />
+                                    <path
+                                        fill="#b1645a"
+                                        d="M135.766 135.107c0-4.42-2.5-8.002-5.56-8.002s-5.56 3.582-5.56 8.002 2.5 8.006 5.56 8.006 5.56-3.584 5.56-8.006m-26.536-10.5a2.086 2.086 0 1 0-4.172 0 2.086 2.086 0 0 0 4.172 0m-6.945-5.275a.67.67 0 1 0 1.265.447c.536-1.515 1.973-2.533 3.577-2.533s3.04 1.018 3.578 2.533a.67.67 0 1 0 1.264-.447 5.15 5.15 0 0 0-9.684 0"
+                                    />
+                                    <g fill="#c5e6da">
+                                        <path
+                                            d="M56.04 109.785c0-.557-.652-1.006-1.455-1.006s-1.454.45-1.454 1.006.65 1.008 1.454 1.008 1.455-.45 1.455-1.008m4.028-2.235c0-.557-.652-1.008-1.455-1.008s-1.454.45-1.454 1.008.65 1.006 1.454 1.006 1.455-.45 1.455-1.006m2.462-2.9c0-.555-.65-1.006-1.455-1.006s-1.453.45-1.453 1.006.65 1.008 1.453 1.008 1.455-.45 1.455-1.008m2.235-3.357c0-.557-.65-1.008-1.453-1.008s-1.455.45-1.455 1.008.65 1.008 1.455 1.008 1.453-.45 1.453-1.008m2.462-3.143c0-.555-.65-1.006-1.454-1.006s-1.455.45-1.455 1.006.652 1.008 1.455 1.008 1.454-.45 1.454-1.008m3.357-2.683c0-.557-.65-1.008-1.455-1.008s-1.453.45-1.453 1.008.65 1.006 1.453 1.006 1.455-.45 1.455-1.006"
+                                        />
+                                        <use xlink:href="#astroicon:frameworks/githube" />
+                                        <use xlink:href="#astroicon:frameworks/githube" x="4.676" />
+                                        <path d="M84.704 94.455c0-.557-.65-1.008-1.454-1.008s-1.455.45-1.455 1.008.65 1.008 1.455 1.008 1.454-.45 1.454-1.008" />
+                                    </g>
+                                </g>
+                            </svg>
+                            <span class="astro-VI2QVZCH">Github</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 64 64" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/typescript">
+                                <path
+                                    fill="#007acc"
+                                    d="M0 32v32h64.002V-.002H0zm51.577-2.55c1.625.406 2.865 1.128 4.003 2.306.59.63 1.463 1.778 1.534 2.052.02.08-2.763 1.95-4.45 2.997-.06.04-.305-.223-.58-.63-.823-1.2-1.686-1.717-3.007-1.808-1.94-.132-3.2.884-3.18 2.58 0 .498.07.792.274 1.2.427.884 1.22 1.412 3.708 2.49 4.582 1.97 6.542 3.27 7.76 5.12 1.36 2.062 1.666 5.354.742 7.802-1.016 2.662-3.535 4.47-7.08 5.07-1.097.193-3.698.163-4.876-.05-2.57-.457-5.008-1.727-6.512-3.393-.59-.65-1.737-2.347-1.666-2.47.03-.04.295-.203.59-.376l2.377-1.37 1.84-1.067.386.57c.538.823 1.717 1.95 2.428 2.326 2.042 1.077 4.846.924 6.227-.315.59-.538.833-1.097.833-1.92 0-.742-.09-1.067-.477-1.625-.498-.71-1.514-1.31-4.4-2.56-3.302-1.422-4.724-2.306-6.024-3.708-.752-.813-1.463-2.113-1.758-3.2-.244-.904-.305-3.17-.112-4.084.68-3.2 3.088-5.415 6.563-6.075 1.128-.213 3.75-.132 4.856.142zm-15.025 2.67.02 2.62h-8.33v23.67H22.35V34.74h-8.33v-2.57l.07-2.64c.03-.04 5.1-.06 11.246-.05l11.185.03z"
+                                />
+                            </svg>
+                            <span class="astro-VI2QVZCH">TypeScript</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg preserveAspectRatio="xMidYMid" viewBox="0 0 6.554 6.555" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/sqlite">
+                                <defs>
+                                    <linearGradient id="astroicon:frameworks/sqlitea" x1="2.983" x2="2.983" y1=".53" y2="4.744" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#97d9f6" />
+                                        <stop offset="92.024%" stop-color="#0f80cc" />
+                                        <stop offset="100%" stop-color="#0f80cc" />
+                                    </linearGradient>
+                                </defs>
+                                <path fill="#0f80cc" d="M4.96.29H.847c-.276 0-.5.226-.5.5v4.536c0 .276.226.5.5.5h2.71c-.03-1.348.43-3.964 1.404-5.54z" />
+                                <path fill="url(#astroicon:frameworks/sqlitea)" d="M4.81.437H.847a.356.356 0 0 0-.355.355v4.205c.898-.345 2.245-.642 3.177-.628A28.93 28.93 0 0 1 4.811.437z" />
+                                <path
+                                    fill="#003b57"
+                                    d="M5.92.142c-.282-.25-.623-.15-.96.148l-.15.146c-.576.61-1.1 1.742-1.276 2.607a2.38 2.38 0 0 1 .148.426l.022.1.022.102s-.005-.02-.026-.08l-.014-.04a.461.461 0 0 0-.009-.022 4.717 4.717 0 0 0-.187-.352 8.789 8.789 0 0 0-.103.321c.132.242.212.656.212.656s-.007-.027-.04-.12c-.03-.083-.176-.34-.21-.4-.06.22-.083.368-.062.404.04.07.08.2.115.324a7.52 7.52 0 0 1 .132.666l.005.062a6.11 6.11 0 0 0 .015.75c.026.313.075.582.137.726l.042-.023c-.09-.284-.128-.655-.112-1.084.025-.655.175-1.445.454-2.268C4.548 1.938 5.2.94 5.798.464c-.545.492-1.282 2.084-1.502 2.673-.247.66-.422 1.28-.528 1.873.182-.556.77-.796.77-.796s.29-.356.626-.865l-.645.172-.208.092s.53-.323.987-.47c.627-.987 1.31-2.39.622-3.002"
+                                />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Sqlite</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 64 64" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/shopify">
+                                <path
+                                    fill="#95bf47"
+                                    d="M53.137 12.484a.633.633 0 0 0-.564-.527c-.225-.037-5.17-.376-5.17-.376l-3.77-3.77c-.34-.376-1.092-.266-1.376-.188-.037 0-.752.225-1.922.605-1.137-3.29-3.15-6.306-6.696-6.306h-.303C32.32.605 31.076 0 30.026 0c-8.256.037-12.19 10.333-13.434 15.594l-5.77 1.77c-1.77.564-1.835.605-2.073 2.293L3.882 57.175 40.35 64l19.763-4.26c0-.037-6.94-46.897-6.976-47.255zM38.313 8.86c-.917.303-1.963.605-3.09.945v-.68a15.03 15.03 0 0 0-.752-4.999c1.848.284 3.09 2.357 3.843 4.733zm-6.068-4.298c.603 1.778.883 3.65.826 5.527v.34l-6.375 1.963c1.248-4.66 3.55-6.962 5.55-7.83zm-2.45-2.293a1.94 1.94 0 0 1 1.055.339c-2.66 1.238-5.472 4.366-6.678 10.627l-5.045 1.546C20.55 10.03 23.87 2.26 29.792 2.26z"
+                                />
+                                <path fill="#5e8e3e" d="M52.573 11.957c-.225-.037-5.17-.376-5.17-.376l-3.77-3.77a.753.753 0 0 0-.527-.225L40.354 64l19.763-4.26-6.98-47.218a.68.68 0 0 0-.564-.564z" />
+                                <path
+                                    fill="#fff"
+                                    d="m33.64 22.89-2.454 7.242a11.361 11.361 0 0 0-4.752-1.133c-3.848 0-4.036 2.412-4.036 3.018 0 3.298 8.636 4.564 8.636 12.333 0 6.11-3.885 10.03-9.1 10.03-6.26 0-9.467-3.885-9.467-3.885l1.665-5.55s3.28 2.83 6.073 2.83a2.47 2.47 0 0 0 2.564-2.49c0-4.34-7.09-4.527-7.09-11.618 0-5.962 4.298-11.77 12.934-11.77 3.394.05 5.018.99 5.018.99z"
+                                />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Shopify</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 64 64" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/jest">
+                                <path
+                                    fill="#99424f"
+                                    d="M59.336 31.518c0-3.854-2.65-7.097-6.207-8.023L61.097 0H21.61l7.986 23.57c-3.446 1-5.985 4.188-5.985 7.968 0 2.78 1.4 5.244 3.502 6.763a22.06 22.06 0 0 1-2.89 3.317c-2.057 1.927-4.336 3.41-6.8 4.39-2.224-1.5-3.187-4.15-2.316-6.522a8.303 8.303 0 0 0 5.855-7.93c0-4.577-3.724-8.283-8.283-8.283-4.577 0-8.3 3.724-8.3 8.3a8.24 8.24 0 0 0 2.409 5.818l-.39.797c-1.24 2.557-2.65 5.448-3.187 8.7-1.075 6.485.686 11.692 4.93 14.638 2.4 1.65 5.02 2.483 7.856 2.483 4.873 0 9.82-2.446 14.6-4.818 3.41-1.686 6.93-3.446 10.395-4.3 1.28-.315 2.613-.5 4.02-.704 2.854-.408 5.8-.834 8.45-2.372 3.094-1.797 5.207-4.8 5.818-8.246.463-2.65 0-5.318-1.186-7.653a8.255 8.255 0 0 0 1.24-4.39zm-3.613 0c0 2.576-2.094 4.67-4.67 4.67a4.674 4.674 0 0 1-4.06-6.986c.148-.26.334-.52.52-.74a4.08 4.08 0 0 1 .649-.611l.02-.02c.148-.11.315-.222.482-.334 0 0 .02 0 .02-.02.074-.037.148-.093.222-.13.02 0 .037-.02.056-.02.074-.037.167-.074.26-.11s.185-.074.26-.11c.02 0 .037-.02.056-.02.074-.02.148-.056.222-.074.02 0 .056-.02.074-.02l.26-.056h.02l.278-.056c.02 0 .056 0 .074-.02.074 0 .148-.02.222-.02h.093c.093 0 .185-.02.296-.02h.24a.76.76 0 0 1 .204.019h.037c.148.02.296.037.445.074a4.71 4.71 0 0 1 3.724 4.595zM26.78 3.706h29.147l-6.69 19.734a7.263 7.263 0 0 0-.834.24l-7.04-14.36-7.06 14.268c-.278-.093-.574-.148-.87-.204zm13.248 26.2a8.22 8.22 0 0 0-2.5-4.447l3.836-7.745 3.873 7.912a8.37 8.37 0 0 0-2.316 4.28zm-9.283-2.928.26-.056h.056c.074-.02.148-.02.222-.037h.074c.074 0 .13-.02.204-.02h.723c.074 0 .13.02.185.02.037 0 .056 0 .093.02.074.02.13.02.204.037.02 0 .037 0 .074.02l.26.056c.093.02.167.037.24.074.02 0 .037.02.074.02.056.02.13.037.185.074.02 0 .037.02.056.02.074.037.148.056.222.093h.02a1 1 0 0 1 .241.13c.093.037.167.093.24.13.02 0 .02.02.037.02.074.037.13.093.204.13l.02.02c.222.167.426.352.63.537l.02.02c.185.204.37.426.52.667a4.66 4.66 0 0 1 .76 2.557c0 2.576-2.094 4.67-4.67 4.67s-4.67-2.094-4.67-4.67c-.02-2.168 1.482-4.002 3.52-4.52zm-18.233-.13c2.576 0 4.67 2.094 4.67 4.67s-2.094 4.67-4.67 4.67-4.67-2.094-4.67-4.67 2.094-4.67 4.67-4.67zm43.1 16.065c-.408 2.372-1.87 4.447-4.02 5.688-2.02 1.167-4.503 1.538-7.115 1.91-1.427.204-2.928.426-4.373.778-3.854.945-7.56 2.798-11.155 4.577-4.595 2.28-8.93 4.428-12.952 4.428-2.094 0-3.965-.593-5.744-1.834-4.076-2.816-3.873-8.097-3.39-10.988.445-2.705 1.686-5.244 2.872-7.67.074-.148.13-.278.204-.426.408.148.834.26 1.28.334-.704 3.928 1.297 7.986 5.188 9.987l.704.37.76-.278c3.243-1.15 6.244-3.02 8.894-5.522a24.89 24.89 0 0 0 3.854-4.577c.426.074.852.093 1.28.093 3.854 0 7.097-2.65 8.023-6.207h3.113a8.29 8.29 0 0 0 8.023 6.207 8.2 8.2 0 0 0 4.188-1.149c.482 1.4.63 2.835.37 4.28z"
+                                />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Jest</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 1024 1024" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/adobe">
+                                <defs>
+                                    <radialGradient id="astroicon:frameworks/adobea" cx="352" cy="352" r="512" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" stop-color="#3a2a1d" />
+                                        <stop offset="1" stop-color="#241405" />
+                                    </radialGradient>
+                                </defs>
+                                <path fill="url(#astroicon:frameworks/adobea)" d="M0 0h1024v1024H0z" />
+                                <path
+                                    fill="#ff7618"
+                                    d="M71 512c0 243.6 197.4 441 441 441s441-197.4 441-441S755.6 71 512 71 71 268.4 71 512zm45-.5c.3-218.7 177.8-395.8 396.5-395.5S908.3 293.8 908 512.5 730.5 908 512 908 115.9 730.4 116 511.6z"
+                                />
+                                <path
+                                    fill="#ffe0cb"
+                                    d="M787 512a96.5 96.5 0 0 0-54.3-86.7 102.4 102.4 0 0 0-134-134 96.4 96.4 0 0 0-173.4 0 102.4 102.4 0 0 0-134 134 96.4 96.4 0 0 0 0 173.4 102.4 102.4 0 0 0 134 134 96.4 96.4 0 0 0 173.4 0 102.4 102.4 0 0 0 134-134A96.5 96.5 0 0 0 787 512zm-94.7-180.3a76.6 76.6 0 0 1 15.5 85.5 97.4 97.4 0 0 0-17.2-1.6 82.3 82.3 0 0 1-82.2-82.2 97.4 97.4 0 0 0-1.6-17.2 76.6 76.6 0 0 1 85.5 15.5zm-98.6 368.5a86.4 86.4 0 0 1-9.3-7.9 102.4 102.4 0 0 0-144.8 0 86.4 86.4 0 0 1-9.3 7.9 75 75 0 0 1-.6-9.6 96.4 96.4 0 0 0-96.3-96.3 75 75 0 0 1-9.6-.6 86.4 86.4 0 0 1 7.9-9.3 102.4 102.4 0 0 0 0-144.8 86.4 86.4 0 0 1-7.9-9.3 75 75 0 0 1 9.6-.6 96.4 96.4 0 0 0 96.3-96.3 75 75 0 0 1 .6-9.6 86.4 86.4 0 0 1 9.3 7.9 102.4 102.4 0 0 0 144.8 0 86.4 86.4 0 0 1 9.3-7.9 75 75 0 0 1 .6 9.6 96.4 96.4 0 0 0 96.3 96.3 75 75 0 0 1 9.6.6 86.4 86.4 0 0 1-7.9 9.3 102.4 102.4 0 0 0 0 144.8 86.4 86.4 0 0 1 7.9 9.3 75 75 0 0 1-9.6.6 96.4 96.4 0 0 0-96.3 96.3 75 75 0 0 1-.6 9.6zM512 251.1a82.3 82.3 0 0 1 74.1 46.5 103.6 103.6 0 0 0-20.2 15.7 76.3 76.3 0 0 1-107.8 0 103.6 103.6 0 0 0-20.2-15.7 82.3 82.3 0 0 1 74.1-46.5zm-180.3 80.6a76.6 76.6 0 0 1 85.5-15.5 97.4 97.4 0 0 0-1.6 17.2 82.3 82.3 0 0 1-82.2 82.2 97.4 97.4 0 0 0-17.2 1.6 76.6 76.6 0 0 1 15.5-85.5zM251.1 512a82.3 82.3 0 0 1 46.5-74.1 103.6 103.6 0 0 0 15.7 20.2 76.3 76.3 0 0 1 0 107.8 103.6 103.6 0 0 0-15.7 20.2 82.3 82.3 0 0 1-46.5-74.1zm80.6 180.3a76.6 76.6 0 0 1-15.5-85.5 97.4 97.4 0 0 0 17.2 1.6 82.3 82.3 0 0 1 82.2 82.2 97.4 97.4 0 0 0 1.6 17.2 76.6 76.6 0 0 1-85.5-15.5zM512 772.9a82.3 82.3 0 0 1-74.1-46.5 103.6 103.6 0 0 0 20.2-15.7 76.3 76.3 0 0 1 107.8 0 103.6 103.6 0 0 0 20.2 15.7 82.3 82.3 0 0 1-74.1 46.5zm180.3-80.6a76.6 76.6 0 0 1-85.5 15.5 97.4 97.4 0 0 0 1.6-17.2 82.3 82.3 0 0 1 82.2-82.2 97.4 97.4 0 0 0 17.2-1.6 76.6 76.6 0 0 1-15.5 85.5zm34.1-106.2a103.6 103.6 0 0 0-15.7-20.2 76.3 76.3 0 0 1 0-107.8 103.6 103.6 0 0 0 15.7-20.2 82.3 82.3 0 0 1 0 148.2z"
+                                />
+                            </svg>
+                            <span class="astro-VI2QVZCH">AEM</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 32 32" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/google_maps">
+                                <g fill-rule="evenodd">
+                                    <path fill="#1ea361" d="M.273 29.123V6.347a2.4 2.4 0 0 1 2.398-2.399h22.775z" />
+                                    <path fill="#fedb43" d="M.273 29.6v-.478L25.447 3.95h.478a2.4 2.4 0 0 1 2.399 2.398v.48L3.15 32h-.48a2.4 2.4 0 0 1-2.398-2.399" />
+                                    <path fill="#5384c4" d="M3.15 32 14.3 20.852 25.447 32z" />
+                                    <path fill="#fff" d="M25.447 32 14.298 20.85l2.876-2.877 11.15 11.15v.478A2.4 2.4 0 0 1 25.925 32h-.478z" />
+                                    <path fill="#c2c2c1" d="m28.324 29.123-11.15-11.15 11.15-11.15z" />
+                                </g>
+                                <path
+                                    fill="#efefef"
+                                    d="M5.276 7.05c1.427-.653 3.213-.387 4.372.682l-1.108 1.1c-1.16-1.15-3.337-.605-3.88.917-.7 1.498.47 3.467 2.14 3.488 1.093.127 2.184-.605 2.415-1.694-.764.001-1.526-.006-2.288.006l-.014-1.413 3.84.052c.096.933.03 1.923-.472 2.74-.787 1.464-2.644 2.104-4.216 1.734-1.943-.403-3.397-2.396-3.132-4.37C3.068 8.9 4 7.627 5.276 7.05"
+                                />
+                                <path
+                                    fill="#dc4b3e"
+                                    d="M23.424 0h.912c2.273.13 4.495 1.24 5.872 3.067.902 1.154 1.406 2.586 1.52 4.04v.54c-.053 2.82-1.857 5.134-3.42 7.327-1.754 2.478-3.374 5.18-3.824 8.233-.12.517.024 1.242-.594 1.475-.145-.113-.315-.207-.417-.365-.183-1.707-.6-3.394-1.338-4.953-.827-1.817-1.977-3.46-3.147-5.065-.712-.963-1.383-1.96-1.938-3.024-.872-1.593-1.197-3.475-.84-5.262.292-1.4 1.03-2.72 2.053-3.73A8.161 8.161 0 0 1 23.424 0m-.177 4.966c-1.078.24-1.983 1.194-2.074 2.3a2.61 2.61 0 0 0 1.426 2.552 2.85 2.85 0 0 0 3.179-.401 2.59 2.59 0 0 0 .663-2.873c-.487-1.218-1.93-1.912-3.194-1.6"
+                                />
+                                <path fill="#802c27" d="M23.247 4.966c1.263-.323 2.708.37 3.194 1.6.4.973.124 2.176-.663 2.873a2.85 2.85 0 0 1-3.179.401c-.93-.46-1.54-1.513-1.426-2.552.1-1.116.996-2.07 2.074-2.3" />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Maps</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg version="1.0" viewBox="0 0 32 32" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/gimp">
+                                <defs>
+                                    <linearGradient id="astroicon:frameworks/gimpi">
+                                        <stop offset="0" stop-color="#5b676b" />
+                                        <stop offset="1" stop-color="#141718" />
+                                    </linearGradient>
+                                    <linearGradient id="astroicon:frameworks/gimpj">
+                                        <stop offset="0" />
+                                        <stop offset="1" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="astroicon:frameworks/gimph">
+                                        <stop offset="0" stop-color="#fff" />
+                                        <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="astroicon:frameworks/gimpa">
+                                        <stop offset="0" stop-color="#fff" />
+                                        <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient
+                                        xlink:href="#astroicon:frameworks/gimpa"
+                                        id="astroicon:frameworks/gimpx"
+                                        x1="13.236"
+                                        x2="7.752"
+                                        y1="37.752"
+                                        y2="42.282"
+                                        gradientTransform="rotate(27.621 -26.244 -49.44) scale(.8523)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                    <linearGradient id="astroicon:frameworks/gimpb">
+                                        <stop offset="0" stop-color="#696969" />
+                                        <stop offset="1" />
+                                    </linearGradient>
+                                    <radialGradient
+                                        xlink:href="#astroicon:frameworks/gimpb"
+                                        id="astroicon:frameworks/gimpw"
+                                        cx="15.415"
+                                        cy="35.357"
+                                        r="7.579"
+                                        fx="15.415"
+                                        fy="35.357"
+                                        gradientTransform="matrix(1.5727 0 0 1.53264 -55.367 -21.358)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                    <linearGradient id="astroicon:frameworks/gimpc">
+                                        <stop offset="0" stop-color="#bdbdbd" />
+                                        <stop offset=".333" stop-color="#e2e2e2" />
+                                        <stop offset=".667" stop-color="#a3a3a3" />
+                                        <stop offset="1" stop-color="#ddd" />
+                                    </linearGradient>
+                                    <linearGradient
+                                        xlink:href="#astroicon:frameworks/gimpc"
+                                        id="astroicon:frameworks/gimpv"
+                                        x1="19.395"
+                                        x2="23.109"
+                                        y1="30.001"
+                                        y2="33.439"
+                                        gradientTransform="translate(-46.407 -1.803)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                    <linearGradient id="astroicon:frameworks/gimpd">
+                                        <stop offset="0" stop-color="#6e3d09" />
+                                        <stop offset=".242" stop-color="#ea8113" />
+                                        <stop offset=".621" stop-color="#5c3307" />
+                                        <stop offset="1" stop-color="#e07c12" />
+                                    </linearGradient>
+                                    <linearGradient
+                                        xlink:href="#astroicon:frameworks/gimpd"
+                                        id="astroicon:frameworks/gimpu"
+                                        x1="37.018"
+                                        x2="27.754"
+                                        y1="19.24"
+                                        y2="11.182"
+                                        gradientTransform="translate(-49.305 1.878)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                    <linearGradient id="astroicon:frameworks/gimpl">
+                                        <stop offset="0" stop-color="#857c63" />
+                                        <stop offset="1" stop-color="#221f19" />
+                                    </linearGradient>
+                                    <linearGradient id="astroicon:frameworks/gimpg">
+                                        <stop offset="0" />
+                                        <stop offset="1" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="astroicon:frameworks/gimpk">
+                                        <stop offset="0" />
+                                        <stop offset="1" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="astroicon:frameworks/gimpf">
+                                        <stop offset="0" stop-color="#fff" />
+                                        <stop offset="1" stop-color="#b9b9b0" />
+                                    </linearGradient>
+                                    <linearGradient id="astroicon:frameworks/gimpe">
+                                        <stop offset="0" stop-color="#fff" />
+                                        <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient xlink:href="#astroicon:frameworks/gimpe" id="astroicon:frameworks/gimps" x1="6.305" x2="5.985" y1="23.362" y2="31.57" gradientUnits="userSpaceOnUse" />
+                                    <radialGradient
+                                        xlink:href="#astroicon:frameworks/gimpf"
+                                        id="astroicon:frameworks/gimpt"
+                                        cx="69.473"
+                                        cy="19.598"
+                                        r="3.515"
+                                        fx="69.473"
+                                        fy="19.598"
+                                        gradientTransform="matrix(1.31849 0 0 1.31849 -22.126 -6.242)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                    <radialGradient
+                                        xlink:href="#astroicon:frameworks/gimpg"
+                                        id="astroicon:frameworks/gimpm"
+                                        cx="23"
+                                        cy="33.938"
+                                        r="18.25"
+                                        fx="23"
+                                        fy="33.938"
+                                        gradientTransform="matrix(1 0 0 .28425 0 24.29)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                    <linearGradient xlink:href="#astroicon:frameworks/gimph" id="astroicon:frameworks/gimpp" x1="14.969" x2="39.525" y1="19.111" y2="46.986" gradientUnits="userSpaceOnUse" />
+                                    <radialGradient
+                                        xlink:href="#astroicon:frameworks/gimpi"
+                                        id="astroicon:frameworks/gimpr"
+                                        cx="6.024"
+                                        cy="25.271"
+                                        r="4.831"
+                                        fx="6.024"
+                                        fy="25.271"
+                                        gradientTransform="matrix(.91616 .09319 -.10877 1.0693 3.254 -3.03)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                    <linearGradient xlink:href="#astroicon:frameworks/gimpj" id="astroicon:frameworks/gimpy" x1="26.163" x2="24.329" y1="30.543" y2="30.985" gradientUnits="userSpaceOnUse" />
+                                    <linearGradient
+                                        xlink:href="#astroicon:frameworks/gimpk"
+                                        id="astroicon:frameworks/gimpo"
+                                        x1="32.35"
+                                        x2="21.213"
+                                        y1="28.083"
+                                        y2="30.293"
+                                        gradientTransform="translate(-3.837 .346)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                    <radialGradient
+                                        xlink:href="#astroicon:frameworks/gimpl"
+                                        id="astroicon:frameworks/gimpn"
+                                        cx="18.558"
+                                        cy="22.3"
+                                        r="19.229"
+                                        fx="18.558"
+                                        fy="22.3"
+                                        gradientTransform="matrix(1.77275 0 0 1.29668 -16.34 -6.616)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                    <radialGradient
+                                        xlink:href="#astroicon:frameworks/gimpf"
+                                        id="astroicon:frameworks/gimpq"
+                                        cx="69.473"
+                                        cy="19.598"
+                                        r="3.515"
+                                        fx="69.473"
+                                        fy="19.598"
+                                        gradientTransform="matrix(1.31849 0 0 1.31849 -22.126 -6.242)"
+                                        gradientUnits="userSpaceOnUse"
+                                    />
+                                </defs>
+                                <g color="#000">
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpm)"
+                                        fill-rule="evenodd"
+                                        d="M41.25 33.938a18.25 5.188 0 1 1-36.5 0 18.25 5.188 0 1 1 36.5 0z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="matrix(.69937 0 0 1.07012 -.345 -14.782)"
+                                    />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpn)"
+                                        fill-rule="evenodd"
+                                        stroke="#2e3436"
+                                        stroke-miterlimit="10"
+                                        d="M10.374 12.468s2.875 5.928 9.6 5.76c14.092-.353 16.563-7.705 16.917-8.765.353-1.061.894-.9 1.02.08 4.596 41.72-31.897 23.82-33.193 16.713 7.247-2.12 5.48-6.187 5.48-6.187l.176-7.601z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="translate(-.432 -.801) scale(.69937)"
+                                    />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpo)"
+                                        fill-rule="evenodd"
+                                        d="M15.738 30.066c6.739 1.348 10.17.098 12.179-1.453-.53-.685-1.436-1.436-1.436-1.436s2.353.654 3.182 1.724c.826 1.066.306 1.723.09 3.088-.481-1.199-1.38-1.648-1.501-2.124-1.807 2.497-6.307 2.393-12.514.201z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="translate(-.432 -.801) scale(.69937)"
+                                    />
+                                    <path
+                                        fill="none"
+                                        stroke="url(#astroicon:frameworks/gimpp)"
+                                        stroke-miterlimit="10"
+                                        d="M36.969 11.844a12.252 12.252 0 0 1-2.688 3.094C31.65 17.116 27.231 19.1 20 19.28c-4.224.105-6.953-1.934-8.625-3.75L11.25 20c.136.419.415 1.39-.063 2.719-.514 1.429-2.154 2.891-4.968 4 .25.522.495 1.043 1.25 1.781 1.028 1.005 2.457 2.088 4.156 3.063 3.398 1.948 7.802 3.493 11.906 3.562 4.105.07 7.857-1.235 10.438-5 2.378-3.471 3.682-9.348 3-18.281z"
+                                        opacity=".185"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="translate(-.432 -.801) scale(.69937)"
+                                    />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpq)"
+                                        fill-rule="evenodd"
+                                        stroke="#888a85"
+                                        stroke-miterlimit="10"
+                                        stroke-width=".783"
+                                        d="M72.655 21.837a3.182 3.182 0 1 1-6.364 0 3.182 3.182 0 1 1 6.364 0z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="matrix(.89364 0 0 .89364 -52.974 -5.353)"
+                                    />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpr)"
+                                        fill-rule="evenodd"
+                                        stroke="#000"
+                                        stroke-miterlimit="10"
+                                        d="M10.43 27.229a4.331 6.099 0 1 1-8.662 0 4.331 6.099 0 1 1 8.662 0z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="rotate(-35.808 .896 18.693) scale(.69937)"
+                                    />
+                                    <path
+                                        fill="#2e3436"
+                                        fill-rule="evenodd"
+                                        stroke="#000"
+                                        stroke-miterlimit="10"
+                                        stroke-width="1.174"
+                                        d="M24.042 21.837a2.298 2.298 0 1 1-4.597 0 2.298 2.298 0 1 1 4.597 0z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="matrix(.59576 0 0 .59576 -3.178 1.573)"
+                                    />
+                                    <path
+                                        fill="none"
+                                        stroke="url(#astroicon:frameworks/gimps)"
+                                        stroke-miterlimit="10"
+                                        d="M6.094 22.156c-.798 0-1.553.446-2.188 1.344-.634.898-1.094 2.234-1.094 3.719 0 1.484.46 2.82 1.094 3.718.635.898 1.39 1.344 2.188 1.344.798 0 1.577-.476 2.218-1.375.642-.898 1.094-2.206 1.094-3.687 0-1.482-.452-2.79-1.094-3.688-.641-.898-1.42-1.375-2.218-1.375z"
+                                        opacity=".281"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="rotate(-36.833 .935 18.852) scale(.69937)"
+                                    />
+                                    <path fill="#fff" fill-rule="evenodd" d="M5.834 23.251a1.768 2.121 0 1 1-3.536 0 1.768 2.121 0 1 1 3.536 0z" overflow="visible" style="marker: none;" transform="translate(-.432 -.801) scale(.69937)" />
+                                    <path fill="#fff" fill-rule="evenodd" d="M23.158 20.953a1.768 1.768 0 1 1-3.536 0 1.768 1.768 0 1 1 3.536 0z" overflow="visible" style="marker: none;" transform="matrix(.53618 0 0 .53618 -2.22 2.716)" />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpt)"
+                                        fill-rule="evenodd"
+                                        stroke="#888a85"
+                                        stroke-miterlimit="10"
+                                        stroke-width=".667"
+                                        d="M72.655 21.837a3.182 3.182 0 1 1-6.364 0 3.182 3.182 0 1 1 6.364 0z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="matrix(1.04906 0 0 1.04906 -57.898 -8.437)"
+                                    />
+                                    <path
+                                        fill="#2e3436"
+                                        fill-rule="evenodd"
+                                        stroke="#000"
+                                        stroke-miterlimit="10"
+                                        d="M24.042 21.837a2.298 2.298 0 1 1-4.597 0 2.298 2.298 0 1 1 4.597 0z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="translate(.557 -.307) scale(.69937)"
+                                    />
+                                    <path fill="#fff" fill-rule="evenodd" d="M23.158 20.953a1.768 1.768 0 1 1-3.536 0 1.768 1.768 0 1 1 3.536 0z" overflow="visible" style="marker: none;" transform="matrix(.62943 0 0 .62943 1.682 1.035)" />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpu)"
+                                        stroke="#673907"
+                                        stroke-linecap="round"
+                                        stroke-width="2.46"
+                                        d="m-23.364 23.568 3.71 3.47c8.347-6.381 17.094-20.1 17.094-20.1 1.976-2.242-.117-3.75-2.165-2.398 0 0-12.97 10.115-18.64 19.028z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="scale(-.28424) rotate(73.585 17.307 -74.753)"
+                                    />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpv)"
+                                        stroke="#888a85"
+                                        stroke-linecap="round"
+                                        stroke-width="2.46"
+                                        d="m-30.45 32.814 2.247 1.934 8.492-7.367.275-.706 1.095-.018c-.438-1.562-2.942-4.383-4.817-4.383l.082 1.09-.67.38-6.704 9.07z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="scale(-.28424) rotate(73.585 17.307 -74.753)"
+                                    />
+                                    <path
+                                        fill="none"
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2.46"
+                                        d="m-23.801 28.377-4.365 5.266"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="scale(-.28424) rotate(73.585 17.307 -74.753)"
+                                    />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpw)"
+                                        d="M-45.341 42.77c10.444 0 18.37 1.244 19.87-6.355 1.21-6.123-7.21-9.057-11.382-3.59-4.02 5.265-8.488 9.945-8.488 9.945z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="scale(-.28424) rotate(73.585 17.307 -74.753)"
+                                    />
+                                    <path fill="#fff" d="M8.875 37.75a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 1 1 2.5 0z" opacity=".528" overflow="visible" style="marker: none;" transform="rotate(-106.415 17.84 14.335) scale(.58836)" />
+                                    <path fill="#fff" d="M8.875 37.75a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 1 1 2.5 0z" overflow="visible" style="marker: none;" transform="scale(-.397) rotate(73.585 36.254 -59.602)" />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpx)"
+                                        d="M-38.544 40.91s3.722.094 6.117-1.413c.847-.533 1.516.65.494 1.088-2.208.944-6.61.324-6.61.324z"
+                                        opacity=".428"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="scale(-.28424) rotate(73.585 17.307 -74.753)"
+                                    />
+                                    <path
+                                        fill="url(#astroicon:frameworks/gimpy)"
+                                        fill-rule="evenodd"
+                                        d="M23.003 31.737c1.497.143 2.85-.273 3.412-.475.098-.555.537-1.62 2.046-1.691l-.53-.928s-1.967 1.348-4.066 1.746l-.862 1.348z"
+                                        overflow="visible"
+                                        style="marker: none;"
+                                        transform="translate(-.432 -.801) scale(.69937)"
+                                    />
+                                </g>
+                            </svg>
+                            <span class="astro-VI2QVZCH">Gimp</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 7.678 7.68" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/figma">
+                                <path fill="#0acf83" d="M2.56 7.68A1.28 1.28 0 0 0 3.84 6.4V5.12H2.56a1.28 1.28 0 0 0 0 2.56z" />
+                                <path fill="#a259ff" d="M1.28 3.84a1.28 1.28 0 0 1 1.28-1.28h1.28v2.56H2.56a1.28 1.28 0 0 1-1.28-1.28z" />
+                                <path fill="#f24e1e" d="M1.28 1.28A1.28 1.28 0 0 1 2.559 0h1.28v2.56H2.56a1.28 1.28 0 0 1-1.28-1.28z" />
+                                <path fill="#ff7262" d="M3.84 0h1.28a1.28 1.28 0 0 1 0 2.56H3.84z" />
+                                <path fill="#1abcfe" d="M6.4 3.84a1.28 1.28 0 0 1-2.56 0 1.28 1.28 0 0 1 2.56 0z" />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Figma</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg viewBox="0 0 64 64" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/jira">
+                                <defs>
+                                    <linearGradient id="astroicon:frameworks/jiraa" gradientUnits="userSpaceOnUse">
+                                        <stop offset=".18" stop-color="#0052cc" />
+                                        <stop offset="1" stop-color="#2684ff" />
+                                    </linearGradient>
+                                    <linearGradient xlink:href="#astroicon:frameworks/jiraa" id="astroicon:frameworks/jirac" x1="42.023" x2="44.133" y1="35.232" y2="33.122" />
+                                    <linearGradient xlink:href="#astroicon:frameworks/jiraa" id="astroicon:frameworks/jirab" x1="41.464" x2="39.35" y1="29.159" y2="31.273" />
+                                </defs>
+                                <path fill="#2684ff" d="M62.21 30.211 31.999.001l-30.21 30.21a2.537 2.537 0 0 0 0 3.581l30.21 30.211 30.21-30.21a2.537 2.537 0 0 0 0-3.582zm-30.211 11.25-9.462-9.462L32 22.537l9.462 9.462z" />
+                                <path fill="url(#astroicon:frameworks/jirab)" d="M41.734 30.7a2.549 2.549 0 0 1-.011-3.594L38.4 30.408l1.803 1.803z" transform="matrix(6.24959 0 0 6.24959 -228.821 -169.263)" />
+                                <path fill="url(#astroicon:frameworks/jirac)" d="m43.252 32.2-1.518 1.518a2.549 2.549 0 0 1 0 3.606l3.32-3.32z" transform="matrix(6.24959 0 0 6.24959 -228.821 -169.263)" />
+                            </svg>
+                            <span class="astro-VI2QVZCH">Jira</span>
+                        </p>
+                    </li>
+                    <li class="h-20 md:transform duration-150 transition-all astro-VI2QVZCH">
+                        <p class="flex flex-col items-center gap-2 astro-VI2QVZCH">
+                            <svg fill="#fff" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 64 64" class="h-12 inView astro-VI2QVZCH" astro-icon="frameworks/slack">
+                                <path fill="#e01e5a" stroke="#e01e5a" stroke-width=".79" d="M17.778 40.31c0-3.728 2.819-6.73 6.32-6.73 3.503 0 6.322 3.002 6.322 6.73v16.565c0 3.728-2.82 6.73-6.321 6.73-3.502 0-6.321-3.002-6.321-6.73z" />
+                                <path fill="#ecb22d" stroke="#ecb22d" stroke-width=".79" d="M40.31 46.222c-3.728 0-6.73-2.819-6.73-6.32 0-3.503 3.002-6.322 6.73-6.322h16.565c3.728 0 6.73 2.82 6.73 6.321 0 3.502-3.002 6.321-6.73 6.321z" />
+                                <path fill="#2fb67c" stroke="#2fb67c" stroke-width=".79" d="M33.58 7.125c0-3.728 2.82-6.73 6.321-6.73 3.502 0 6.321 3.002 6.321 6.73V23.69c0 3.728-2.819 6.73-6.32 6.73-3.503 0-6.322-3.002-6.322-6.73z" />
+                                <path fill="#36c5f1" stroke="#36c5f1" stroke-width=".79" d="M7.125 30.42c-3.728 0-6.73-2.82-6.73-6.321 0-3.502 3.002-6.321 6.73-6.321H23.69c3.728 0 6.73 2.819 6.73 6.32 0 3.503-3.002 6.322-6.73 6.322z" />
+                                <g stroke-linejoin="miter">
+                                    <path fill="#ecb22d" stroke="#ecb22d" stroke-width=".79012" d="M33.58 57.284a6.308 6.308 0 0 0 6.321 6.32 6.307 6.307 0 0 0 6.321-6.32 6.308 6.308 0 0 0-6.32-6.321H33.58z" />
+                                    <path fill="#2fb67c" stroke="#2fb67c" stroke-width=".79012" d="M57.284 30.42h-6.321v-6.321a6.307 6.307 0 0 1 6.321-6.321 6.307 6.307 0 0 1 6.32 6.32 6.307 6.307 0 0 1-6.32 6.322z" />
+                                    <path fill="#e01e5a" stroke="#e01e5a" stroke-width=".79012" d="M6.716 33.58h6.321v6.321a6.307 6.307 0 0 1-6.32 6.321 6.308 6.308 0 0 1-6.322-6.32 6.307 6.307 0 0 1 6.321-6.322z" />
+                                    <path fill="#36c5f1" stroke="#36c5f1" stroke-width=".79012" d="M30.42 6.716v6.321h-6.321a6.308 6.308 0 0 1-6.321-6.321 6.307 6.307 0 0 1 6.32-6.32 6.308 6.308 0 0 1 6.322 6.32z" />
+                                </g>
+                            </svg>
+                            <span class="astro-VI2QVZCH">Slack</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="pt-32 astro-E5RB7OGA">
+            <section id="blog" class="flex scroll-mt-24 flex-col items-center gap-4 space-y-8 min-h-screen place-items-center justify-center">
+                <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl">
+                    My Blog
+                </h2>
+                <ul class="min-h-screen gap-8 px-4 text-color-background w-full max-w-6xl grid md:grid-cols-2 lg:grid-cols-3 pb-32 astro-E5RB7OGA">
+                    <a class="urlAnchor astro-E5RB7OGA" href="/blog/chatgpt">
+                        <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+                            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/documentation.6784fd55.webp" alt="Bad at writing articles? ChatGPT can help you out!" /></figure>
+                            <div class="card-body astro-E5RB7OGA">
+                                <h2 class="card-title astro-E5RB7OGA">Bad at writing articles? ChatGPT can help you out!</h2>
+                            </div>
+                        </li>
+                    </a>
+                    <a class="urlAnchor astro-E5RB7OGA" href="/blog/btn">
+                        <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+                            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/ai-btns.e141bb1b.webp" alt="How to animate buttons with Tailwind CSS" /></figure>
+                            <div class="card-body astro-E5RB7OGA">
+                                <h2 class="card-title astro-E5RB7OGA">How to animate buttons with Tailwind CSS</h2>
+                            </div>
+                        </li>
+                    </a>
+                    <a class="urlAnchor astro-E5RB7OGA" href="/blog/swagger">
+                        <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+                            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/document.3f5e2773.webp" alt="Add Swagger API documentation to your Nest app" /></figure>
+                            <div class="card-body astro-E5RB7OGA">
+                                <h2 class="card-title astro-E5RB7OGA">Add Swagger API documentation to your Nest app</h2>
+                            </div>
+                        </li>
+                    </a>
+                    <a class="urlAnchor astro-E5RB7OGA" href="/blog/observer">
+                        <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+                            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/observer.8b75b01a.webp" alt="Using an Observer to animate elements on scroll" /></figure>
+                            <div class="card-body astro-E5RB7OGA">
+                                <h2 class="card-title astro-E5RB7OGA">Using an Observer to animate elements on scroll</h2>
+                            </div>
+                        </li>
+                    </a>
+                    <a class="urlAnchor astro-E5RB7OGA" href="/blog/crud">
+                        <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+                            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/nest-crud.471ef5d0.webp" alt="How to generate CRUD API endpoints with NestJS" /></figure>
+                            <div class="card-body astro-E5RB7OGA">
+                                <h2 class="card-title astro-E5RB7OGA">How to generate CRUD API endpoints with NestJS</h2>
+                            </div>
+                        </li>
+                    </a>
+                    <a class="urlAnchor astro-E5RB7OGA" href="/blog/dali">
+                        <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+                            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/ai.a7eecc22.webp" alt="Using OpenAI's DALL-E 2 AI to Generate Images" /></figure>
+                            <div class="card-body astro-E5RB7OGA">
+                                <h2 class="card-title astro-E5RB7OGA">Using OpenAI&#39;s DALL-E 2 I to Generate Images</h2>
+                            </div>
+                        </li>
+                    </a>
+                </ul>
+            </section>
+        </div>
+
+        <section id="" class="flex scroll-mt-24 flex-col items-center gap-4 space-y-8 min-h-screen place-items-center justify-center">
+            <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl">
+                Recent Projects
+            </h2>
+            <div id="work" class="max-w-6xl space-y-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    <span class="inView">
+                        <a class="group aspect-video hover:!text-default" href="https://stellular-praline-beb11a.netlify.app/">
+                            <div class="mockup-phone border-primary relative shadow-[var(--color-primary)] shadow-lg">
+                                <div class="camera opacity-50"></div>
+                                <div class="display">
+                                    <div class="artboard artboard-demo phone-1">
+                                        <picture>
+                                            <img
+                                                src="/assets/jobbank.webp"
+                                                loading="lazy"
+                                                decoding="async"
+                                                alt="A screenshot of CA Job Bank"
+                                                class="object-cover w-full h-full transition-all duration-300 bg-cover group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
+                                            />
+                                        </picture>
+                                    </div>
+                                </div>
+                                <figcaption class="absolute inset-0">
+                                    <div class="flex h-full flex-col items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100">
+                                        <h3 class="text-center font-extrabold uppercase text-xl">
+                                            CA Job Bank
+                                        </h3>
+                                        <p class="border border-current px-4 py-2">https://shiny-pika-766c56.netlify.app</p>
+
+                                        <h3 class="text-center px-4 font-extrabold uppercase text-sm">
+                                            A front end display of data scraped from the Government of Canada's Job Bank website. Created with Nuxt.js and Tailwind CSS.
+                                        </h3>
+                                    </div>
+                                </figcaption>
+                            </div>
+
+                            <div></div>
+                        </a>
+                    </span>
+
+                    <span class="inView">
+                        <a class="group aspect-video hover:!text-default" href="https://github.com/M3D3L/CanadaJobScraper">
+                            <div class="mockup-phone border-primary relative shadow-[var(--color-primary)] shadow-lg">
+                                <div class="camera opacity-50"></div>
+                                <div class="display">
+                                    <div class="artboard artboard-demo phone-1">
+                                        <picture>
+                                            <img
+                                                src="/assets/jobscraper.webp"
+                                                loading="lazy"
+                                                decoding="async"
+                                                alt="A screenshot of Job Scraper"
+                                                class="object-cover w-full h-full transition-all duration-300 bg-cover group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
+                                            />
+                                        </picture>
+                                    </div>
+                                </div>
+                                <figcaption class="absolute inset-0">
+                                    <div class="flex h-full flex-col items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100">
+                                        <h3 class="text-center font-extrabold uppercase text-xl">
+                                            CA Data Scraper
+                                        </h3>
+                                        <p class="border border-current px-4 py-2">https://github.com/M3D3L/CanadaJobScraper</p>
+
+                                        <h3 class="text-center px-4 font-extrabold uppercase text-sm">
+                                            A data scraper made with Cheerio and Puppeteer. It scrapes the Government of Canada's Job Bank website and returns the data in a JSON format.
+                                        </h3>
+                                    </div>
+                                </figcaption>
+                            </div>
+
+                            <div></div>
+                        </a>
+                    </span>
+
+                    <span class="inView">
+                        <a class="group aspect-video hover:!text-default" href="https://www.palacio85.com/">
+                            <div class="mockup-phone border-primary relative shadow-[var(--color-primary)] shadow-lg">
+                                <div class="camera opacity-50"></div>
+                                <div class="display">
+                                    <div class="artboard artboard-demo phone-1">
+                                        <picture>
+                                            <source type="image/avif" srcset="/assets/palacio.5635d169_Z1cUeHD.avif 450w, /assets/palacio.5635d169_Z1lN8Jx.avif 800w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+                                            <source type="image/webp" srcset="/assets/palacio.5635d169_ZtzpJR.webp 450w, /assets/palacio.5635d169_ZCsjLL.webp 800w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+                                            <source type="image/png" srcset="/assets/palacio.5635d169_17Df1r.png 450w, /assets/palacio.5635d169_Z1kJ6Ko.png 800w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+                                            <img
+                                                src="/assets/palacio.5635d169_Z1kJ6Ko.webp"
+                                                loading="lazy"
+                                                decoding="async"
+                                                alt="A screenshot of https://www.palacio85.com/"
+                                                class="object-cover w-full h-full transition-all duration-300 bg-cover group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
+                                            />
+                                        </picture>
+                                    </div>
+                                </div>
+                                <figcaption class="absolute inset-0">
+                                    <div class="flex h-full flex-col items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100">
+                                        <h3 class="text-center font-extrabold uppercase text-xl">
+                                            Palacio85
+                                        </h3>
+                                        <p class="border border-current px-4 py-2">https://www.palacio85.com/</p>
+
+                                        <h3 class="text-center px-4 font-extrabold uppercase text-sm">
+                                            Created with Shopify&#39;s Hydrogen framework (a react based framework). It combines the power of Shopify&#39;s backend with the flexibility of server side rendering.
+                                        </h3>
+                                    </div>
+                                </figcaption>
+                            </div>
+
+                            <div></div>
+                        </a>
+                    </span>
+                    <span class="inView">
+                        <a class="group aspect-video hover:!text-default" href="https://www.astrazeneca.com/our-company/our-people.html/">
+                            <div class="mockup-phone border-primary relative shadow-[var(--color-primary)] shadow-lg">
+                                <div class="camera opacity-50"></div>
+                                <div class="display">
+                                    <div class="artboard artboard-demo phone-1">
+                                        <picture>
+                                            <source
+                                                type="image/avif"
+                                                srcset="/assets/astrazeneca.a5a76063_Z2lCbaj.avif 450w, /assets/astrazeneca.a5a76063_Z1bek4P.avif 800w"
+                                                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                            />
+                                            <source type="image/webp" srcset="/assets/astrazeneca.a5a76063_Z1Chmcx.webp 450w, /assets/astrazeneca.a5a76063_ZrSv74.webp 800w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+                                            <source type="image/png" srcset="/assets/astrazeneca.a5a76063_Z2vJwr1.png 450w, /assets/astrazeneca.a5a76063_Z2tr3d4.png 800w" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+                                            <img
+                                                src="/assets/astrazeneca.a5a76063_Z2tr3d4.webp"
+                                                loading="lazy"
+                                                decoding="async"
+                                                alt="A screenshot of https://www.astrazeneca.com/our-company/our-people.html/"
+                                                class="object-cover w-full h-full transition-all duration-300 bg-cover group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
+                                            />
+                                        </picture>
+                                    </div>
+                                </div>
+                                <figcaption class="absolute inset-0">
+                                    <div class="flex h-full flex-col items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100">
+                                        <h3 class="text-center font-extrabold uppercase text-xl">
+                                            Astrazeneca
+                                        </h3>
+                                        <p class="border border-current px-4 py-2">https://www.astrazeneca.com/our-company/our-people.html/</p>
+
+                                        <h3 class="text-center px-4 font-extrabold uppercase text-sm">
+                                            Astrazeneca is a global pharmaceutical company. I assist in the development and maintenance of their content using a variety of tools such as Adobe Experience Manager, Adobe Analytics, and more.
+                                        </h3>
+                                    </div>
+                                </figcaption>
+                            </div>
+
+                            <div></div>
+                        </a>
+                    </span>
+                    <span class="inView">
+                        <a class="group aspect-video hover:!text-default" href="https://laravel.reservandonos.able-lab.mx/">
+                            <div class="mockup-phone border-primary relative shadow-[var(--color-primary)] shadow-lg">
+                                <div class="camera opacity-50"></div>
+                                <div class="display">
+                                    <div class="artboard artboard-demo phone-1">
+                                        <picture>
+                                            <source
+                                                type="image/avif"
+                                                srcset="/assets/reservandonos.308de438_Yd0Yu.avif 450w, /assets/reservandonos.308de438_ZnPIfH.avif 800w"
+                                                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                            />
+                                            <source
+                                                type="image/webp"
+                                                srcset="/assets/reservandonos.308de438_1HxOWg.webp 450w, /assets/reservandonos.308de438_ku5H4.webp 800w"
+                                                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                            />
+                                            <source
+                                                type="image/png"
+                                                srcset="/assets/reservandonos.308de438_ZB67gQ.png 450w, /assets/reservandonos.308de438_Z1WQEwc.png 800w"
+                                                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                            />
+                                            <img
+                                                src="/assets/reservandonos.308de438_Z1WQEwc.webp"
+                                                loading="lazy"
+                                                decoding="async"
+                                                alt="A screenshot of https://deft-crumble-7e5cbd.netlify.app"
+                                                class="object-cover w-full h-full transition-all duration-300 bg-cover group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
+                                            />
+                                        </picture>
+                                    </div>
+                                </div>
+                                <figcaption class="absolute inset-0">
+                                    <div class="flex h-full flex-col items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100">
+                                        <h3 class="text-center font-extrabold uppercase text-xl">
+                                            Coca-Cola Prototype
+                                        </h3>
+                                        <p class="border border-current px-4 py-2">https://deft-crumble-7e5cbd.netlify.app</p>
+
+                                        <h3 class="text-center px-4 font-extrabold uppercase text-sm">
+                                            I was tasked to prototype the front end for Reservandonos.com new look. Reservandonos is a reservations website brought by Coca-Cola.
+                                            I was tasked in creating the front end for the many pages on the website and mobile app.
+                                        </h3>
+                                    </div>
+                                </figcaption>
+                            </div>
+
+                            <div></div>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section id="" class="flex scroll-mt-24 flex-col items-center gap-4 space-y-8 min-h-screen place-items-center justify-center">
+            <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl"></h2>
+            <div id="contact" class="w-full justify-center flex p-4 md:p-8">
+                <div class="hero min-h-screen max-w-6xl text-white w-full h-full bg-white bg-opacity-10">
+                    <div class="hero-content flex-col lg:flex-row-reverse">
+                        <div class="px-8 inView text-center lg:text-left">
+                            <h1 class="gradient-text font-bold text-6xl">Hire Me</h1>
+                            <p class="py-6">Need help? Let's chat over a cup of coffee ☕</p>
+                        </div>
+                        <div class="card w-full max-w-md flex-shrink-0 bg-base-100 shadow-lg shadow-[var(--color-primary)]">
+                            <form action="https://formsubmit.co/7cbfcf8a8143c9f8708006416b2a0aae" method="POST" class="card-body">
+                                <div class="form-control">
+                                    <label class="label">
+                                        <span class="label-text">Email</span>
+                                    </label>
+                                    <input type="text" name="email" required placeholder="email" class="input-bordered input-primary input w-full text-default" />
+                                </div>
+                                <div class="form-control">
+                                    <label class="label">
+                                        <span class="label-text">Message</span>
+                                    </label>
+                                    <textarea name="message" required placeholder="password" class="input-bordered input-primary input w-full h-24 pt-2 text-default"></textarea>
+                                </div>
+                                <div class="form-control mt-6">
+                                    <button type="submit" class="category-box btn text-white shadow-md">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="category-box-inverse opacity-[85%] astro-EDQJ2XFX">
+            <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 astro-EDQJ2XFX">
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 astro-EDQJ2XFX">
+                    <div class="astro-EDQJ2XFX">
+                        <h3 class="text-2xl font-bold category-box inline px-4 py-2 astro-EDQJ2XFX">Thanks for visiting</h3>
+                        <p class="max-w-xs mt-4 inView text-sm category-box-inverse font-bold px-4 py-1 astro-EDQJ2XFX">
+                            Check out my socials below!
+                        </p>
+                        <div class="flex inView mt-8 space-x-6 text-background-contrast astro-EDQJ2XFX">
+                            <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href="https://www.instagram.com/medeldx/" target="_blank" rel="noreferrer">
+                                <span class="sr-only astro-EDQJ2XFX"> Instagram </span>
+                                <svg class="w-6 h-6 astro-EDQJ2XFX" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                        clipRule="evenodd"
+                                        class="astro-EDQJ2XFX"
+                                    ></path>
+                                </svg>
+                            </a>
+                            <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href="https://twitter.com/gmomedel" target="_blank" rel="noreferrer">
+                                <span class="sr-only astro-EDQJ2XFX"> Twitter </span>
+                                <svg class="w-6 h-6 astro-EDQJ2XFX" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                                        class="astro-EDQJ2XFX"
+                                    ></path>
+                                </svg>
+                            </a>
+                            <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href="https://github.com/M3D3L" target="_blank" rel="noreferrer">
+                                <span class="sr-only astro-EDQJ2XFX"> GitHub </span>
+                                <svg class="w-6 h-6 astro-EDQJ2XFX" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                        clipRule="evenodd"
+                                        class="astro-EDQJ2XFX"
+                                    ></path>
+                                </svg>
+                            </a>
+                            <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href="https://medeldx.com/" target="_blank" rel="noreferrer">
+                                <span class="sr-only astro-EDQJ2XFX">Website</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 astro-EDQJ2XFX">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"
+                                        class="astro-EDQJ2XFX"
+                                    ></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-3 astro-EDQJ2XFX">
+                        <div class="astro-EDQJ2XFX">
+                            <p class="text-teal-500 category-box-inverse px-4 py-1 inline font-bold astro-EDQJ2XFX">
+                                Contact
+                            </p>
+                            <nav class="flex flex-col mt-6 space-y-2 text-sm text-background-contrast astro-EDQJ2XFX">
+                                <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> CA +1 236-998-8668 </a>
+                                <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> MX +52 644-457-3193 </a>
+                                <a href="mailto: guillermoantoniomedel@gmail.com" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX">
+                                    guillermoantoniomedel<br class="astro-EDQJ2XFX" />
+                                    @gmail.com
+                                </a>
+                            </nav>
+                        </div>
+                        <div class="astro-EDQJ2XFX">
+                            <p class="font-bold text-teal-500 category-box-inverse px-4 py-1 inline astro-EDQJ2XFX">
+                                Sections
+                            </p>
+                            <nav class="flex flex-col mt-6 space-y-2 text-sm text-background-contrast astro-EDQJ2XFX">
+                                <a href="#about" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> About </a>
+                                <a href="#skills" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> My Skills </a>
+                                <a href="#blog" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> Blog </a>
+                                <a href="#work" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> My Work </a>
+                                <a href="#contact" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> Contact </a>
+                            </nav>
+                        </div>
+
+                        <div class="astro-EDQJ2XFX">
+                            <p class="font-bold category-box-inverse px-4 py-1 inline astro-EDQJ2XFX">
+                                Blog
+                            </p>
+                            <nav class="flex flex-col mt-6 space-y-2 text-sm text-background-contrast astro-EDQJ2XFX">
+                                <a href="/blog/btn" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> Tailwind Buttons </a>
+                                <a href="/blog/swagger" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> Swagger API </a>
+                                <a href="/blog/crud" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> Nest.js CRUD </a>
+                                <a href="/blog/observer" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> Observer Animations </a>
+                                <a href="/blog/dali" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> AI Pictures </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-8 text-xs text-[var(--color-background)] astro-EDQJ2XFX">
+                    © 2022 Guillermo Medel
+                </p>
+            </div>
+        </footer>
+        <script defer>
+            //get all the elements with the class inView
+            const inView = document.querySelectorAll(".inView");
+            //add an observer to each element
+            inView.forEach((el) => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        //if the element is in view, add the class
+                        if (entry.intersectionRatio > 0) {
+                            entry.target.classList.add("fadeUp");
+                        } else {
+                            entry.target.classList.remove("fadeUp");
+                            entry.target.classList.add("opacity-0");
+                        }
+                    });
+                });
+                observer.observe(el);
+            });
+        </script>
+    </body>
+</html>

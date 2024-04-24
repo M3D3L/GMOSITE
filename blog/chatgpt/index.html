@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="generator" content="Astro v1.6.11">
+
+    <title>Guillermo Medel</title>
+    <meta name="description" content="Adding documentaion can be a tidious task. Luckily, NestJS has a built-in Swagger module that can be used to generate API documentation. In this tutorial, we will learn how to add Swagger to our NestJS app. It's as easy as adding a few lines of code.">
+
+    <!-- social media -->
+    <meta property="og:title" content="Astro">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Adding documentaion can be a tidious task. Luckily, NestJS has a built-in Swagger module that can be used to generate API documentation. In this tutorial, we will learn how to add Swagger to our NestJS app. It's as easy as adding a few lines of code.">
+    <meta property="og:image" content="../../assets/ai-btns.e141bb1b.webp">
+    <meta property="og:url" content="https://guillermomedel.com/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- initialize theme -->
+    <script>
+      const themeSaved = localStorage.getItem("theme");
+
+      if (themeSaved) {
+        document.documentElement.dataset.theme = themeSaved;
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+      }
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+          }
+        });
+    </script>
+  <link rel="stylesheet" href="/assets/blog.4e0a45fb.css" />
+<link rel="stylesheet" href="/assets/btn.2c98e744.css" /><script type="module" src="/hoisted.8f2a05ea.js"></script></head>
+  <body class="h-screen overflow-x-hidden snap-y snap-mandatory relative text-default text-base selection:bg-secondary selection:text-white">
+    <header id="page-header" class="absolute top-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white astro-NZK43K3M">
+  <a href="/" class="astro-NZK43K3M">
+    <img class="sm:w-12 w-10 h-10 sm:h-12 astro-NZK43K3M" src="../../assets/logo.png" alt="GM logo">
+  </a>
+  <div class="astro-NZK43K3M">
+    <div class="flex items-center gap-6 astro-NZK43K3M">
+      <nav class="hidden sm:block astro-NZK43K3M">
+        <ul class="flex items-center gap-6 px-8 astro-NZK43K3M">
+          <li class="astro-NZK43K3M">
+                <a class="text-sm nav astro-NZK43K3M" href="#about">
+                  About Me
+                </a>
+              </li><li class="astro-NZK43K3M">
+                <a class="text-sm nav astro-NZK43K3M" href="#skills">
+                  My Skills
+                </a>
+              </li><li class="astro-NZK43K3M">
+                <a class="text-sm nav astro-NZK43K3M" href="#blog">
+                  Blog
+                </a>
+              </li><li class="astro-NZK43K3M">
+                <a class="text-sm nav astro-NZK43K3M" href="#work">
+                  My Work
+                </a>
+              </li><li class="astro-NZK43K3M">
+                <a class="text-sm nav astro-NZK43K3M" href="#contact">
+                  Contact Me
+                </a>
+              </li>
+              
+              <button id="open-nav-button" type="button" class="btn sm:hidden astro-NZK43K3M" aria-label="Navigation">
+        <svg viewBox="0 0 24 24" class="h-8 astro-NZK43K3M" astro-icon="mdi:menu"><path fill="currentColor" d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      </button>
+        </ul>
+      </nav>
+  
+      <!--
+  negative margin is sum of button width (8) and gap size of flex parent (6)
+  TODO don't hardcode these values
+--><button id="theme-switcher" type="button" class="-ml-14 origin-[right_center] scale-0 transition-all duration-500 astro-KOS34MNN">
+  <div id="icon-theme-light" class="astro-KOS34MNN">
+    <svg viewBox="0 0 512 512" class="h-8 astro-KOS34MNN" astro-icon="theme/light"><defs><linearGradient id="astroicon:theme/lighta" x1="149.99" x2="234.01" y1="119.24" y2="264.76" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="currentColor"/><stop offset=".45" stop-color="currentColor"/><stop offset="1" stop-color="currentColor"/></linearGradient><symbol id="astroicon:theme/lightb" viewBox="0 0 384 384"><circle cx="192" cy="192" r="84" fill="url(#astroicon:theme/lighta)" stroke="currentColor" stroke-miterlimit="10" stroke-width="6"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="24" d="M192 61.66V12m0 360v-49.66m92.17-222.51 35.11-35.11M64.72 319.28l35.11-35.11m0-184.34L64.72 64.72m254.56 254.56-35.11-35.11M61.66 192H12m360 0h-49.66"><animateTransform additive="sum" attributeName="transform" dur="6s" repeatCount="indefinite" type="rotate" values="0 192 192; 45 192 192"/></path></symbol></defs><use xlink:href="#astroicon:theme/lightb" width="384" height="384" transform="translate(64 64)"/></svg>
+    <span class="sr-only astro-KOS34MNN">Use light theme</span>
+  </div>
+  <div id="icon-theme-dark" class="hidden astro-KOS34MNN">
+    <svg viewBox="0 0 512 512" class="h-8 astro-KOS34MNN" astro-icon="theme/dark"><defs><linearGradient id="astroicon:theme/darkb" x1="54.33" x2="187.18" y1="29.03" y2="259.13" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="currentColor"/><stop offset=".45" stop-color="currentColor"/><stop offset="1" stop-color="currentColor"/></linearGradient><linearGradient id="astroicon:theme/darka" x1="294" x2="330" y1="112.82" y2="175.18" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="currentColor"/><stop offset=".45" stop-color="currentColor"/><stop offset="1" stop-color="currentColor"/></linearGradient><linearGradient xlink:href="#astroicon:theme/darka" id="astroicon:theme/darkc" x1="295.52" x2="316.48" y1="185.86" y2="222.14"/><linearGradient xlink:href="#astroicon:theme/darka" id="astroicon:theme/darkd" x1="356.29" x2="387.71" y1="194.78" y2="249.22"/><symbol id="astroicon:theme/darke" overflow="visible" viewBox="0 0 270 270"><path fill="url(#astroicon:theme/darkb)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" d="M252.25 168.63C178.13 168.63 118 109.35 118 36.21A130.48 130.48 0 0 1 122.47 3C55.29 10.25 3 66.37 3 134.58 3 207.71 63.09 267 137.21 267 199.69 267 252 224.82 267 167.79a135.56 135.56 0 0 1-14.75.84Z"><animateTransform additive="sum" attributeName="transform" dur="6s" repeatCount="indefinite" type="rotate" values="-15 135 135; 9 135 135; -15 135 135"/></path></symbol></defs><path fill="url(#astroicon:theme/darka)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m282.83 162.84 24.93-6.42a1.78 1.78 0 0 1 1.71.46l18.37 18a1.8 1.8 0 0 0 3-1.73l-6.42-24.93a1.78 1.78 0 0 1 .46-1.71l18-18.37a1.8 1.8 0 0 0-1.73-3l-24.93 6.42a1.78 1.78 0 0 1-1.71-.46l-18.37-18a1.8 1.8 0 0 0-3 1.73l6.42 24.93a1.78 1.78 0 0 1-.46 1.71l-18 18.37a1.8 1.8 0 0 0 1.73 3Z"><animateTransform additive="sum" attributeName="transform" calcMode="spline" dur="6s" keySplines=".42, 0, .58, 1; .42, 0, .58, 1" repeatCount="indefinite" type="rotate" values="-15 312 144; 15 312 144; -15 312 144"/><animate attributeName="opacity" dur="6s" values="1; .75; 1; .75; 1; .75; 1"/></path><path fill="url(#astroicon:theme/darkc)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m285.4 193.44 12 12.25a1.19 1.19 0 0 1 .3 1.14l-4.28 16.62a1.2 1.2 0 0 0 2 1.15l12.25-12a1.19 1.19 0 0 1 1.14-.3l16.62 4.28a1.2 1.2 0 0 0 1.15-2l-12-12.25a1.19 1.19 0 0 1-.3-1.14l4.28-16.62a1.2 1.2 0 0 0-2-1.15l-12.25 12a1.19 1.19 0 0 1-1.14.3l-16.62-4.28a1.2 1.2 0 0 0-1.15 2Z"><animateTransform additive="sum" attributeName="transform" begin="-.33s" calcMode="spline" dur="6s" keySplines=".42, 0, .58, 1; .42, 0, .58, 1" repeatCount="indefinite" type="rotate" values="-15 306 204; 15 306 204; -15 306 204"/><animate attributeName="opacity" begin="-.33s" dur="6s" values="1; .75; 1; .75; 1; .75; 1"/></path><path fill="url(#astroicon:theme/darkd)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m337.32 223.73 24.8 6.9a1.83 1.83 0 0 1 1.25 1.25l6.9 24.8a1.79 1.79 0 0 0 3.46 0l6.9-24.8a1.83 1.83 0 0 1 1.25-1.25l24.8-6.9a1.79 1.79 0 0 0 0-3.46l-24.8-6.9a1.83 1.83 0 0 1-1.25-1.25l-6.9-24.8a1.79 1.79 0 0 0-3.46 0l-6.9 24.8a1.83 1.83 0 0 1-1.25 1.25l-24.8 6.9a1.79 1.79 0 0 0 0 3.46Z"><animateTransform additive="sum" attributeName="transform" begin="-.67s" calcMode="spline" dur="6s" keySplines=".42, 0, .58, 1; .42, 0, .58, 1" repeatCount="indefinite" type="rotate" values="-15 372 222; 15 372 222; -15 372 222"/><animate attributeName="opacity" begin="-.67s" dur="6s" values="1; .75; 1; .75; 1; .75; 1"/></path><use xlink:href="#astroicon:theme/darke" width="270" height="270" transform="translate(121 121)"/></svg>
+    <span class="sr-only astro-KOS34MNN">Use dark theme</span>
+  </div>
+</button>
+
+
+
+
+    </div>
+    <div id="menu-modal" class="modal hidden astro-NZK43K3M" aria-hidden="true">
+      <div class="fixed inset-0 bg-default px-8 py-4 text-default astro-NZK43K3M">
+        <div class="space-y-4 astro-NZK43K3M" role="dialog" aria-modal="true">
+          <header class="text-right astro-NZK43K3M">
+            <button id="close-nav-button" type="button" class="btn astro-NZK43K3M" aria-label="Close navigation">
+              <svg viewBox="0 0 24 24" class="h-8 astro-NZK43K3M" astro-icon="mdi:close"><path fill="currentColor" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+            </button>
+          </header>
+          <div class="flex justify-center astro-NZK43K3M">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" class="h-16 astro-NZK43K3M" viewBox="0 0 24 24" astro-icon="logomark"><path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg>
+          </div>
+          <nav class="astro-NZK43K3M">
+            <ul class="flex flex-col astro-NZK43K3M">
+              <li class="astro-NZK43K3M">
+                    <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#about">
+                      About Me
+                    </a>
+                  </li><li class="astro-NZK43K3M">
+                    <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#skills">
+                      My Skills
+                    </a>
+                  </li><li class="astro-NZK43K3M">
+                    <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#blog">
+                      Blog
+                    </a>
+                  </li><li class="astro-NZK43K3M">
+                    <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#work">
+                      My Work
+                    </a>
+                  </li><li class="astro-NZK43K3M">
+                    <a class="block py-4 text-center text-xl astro-NZK43K3M" href="#contact">
+                      Contact Me
+                    </a>
+                  </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<noscript>
+  <style>
+    #open-nav-button {
+      display: none;
+    }
+  </style>
+</noscript>
+
+
+    <div id="starfield" class="fixed h-screen w-full -z-10 top-0 left-0 inset-0">
+  <canvas id="starfield-canvas"></canvas>
+</div>
+
+
+    <div class="max-w-6xl mx-auto px-8 pt-12">
+        <div class="w-full h-96 rounded pt-8 overflow-hidden">
+            <img class="w-full h-full object-cover fadeUp" src="../../assets/documentation.6784fd55.webp" alt="A scribe writing on parchment">  
+          </div>
+      
+          <h1 class="text-6xl uppercase gradient-text font-extrabold mt-4">
+            Bad at writing articles? ChatGPT can help you out!
+          </h1>
+    </div>
+    <div class="min-h-screen px-8 text-white w-full mx-auto max-w-6xl pb-32 flex flex-col justify-center">
+
+    <h2 class="py-8 inView">
+      ChatGPT has been a huge buzz word lately and I wanted to see what all the hype is about. For those of you that don't know ChatGPT is OpenAI's tool that takes 
+      text prompts and provides a detailed response. Instead of writing a long article, I decided to let ChatGPT explain why you should use it and how it could help your business.
+
+    </h2>
+    
+    <q class="text-teal-400">
+      <span class="inView">
+      As a business owner, you are always looking for ways to improve your customer service and make it more efficient. One tool that can help you do that is ChatGPT, a powerful language model developed by OpenAI. In this article, we will discuss why business owners should use ChatGPT and how it can benefit them.
+    </span>
+      <br>
+      <br>
+      <span class="inView">
+      First of all, ChatGPT is a highly advanced language model that is capable of understanding and responding to human language in a natural and conversational way. This means that it can handle a wide range of customer inquiries and provide accurate and relevant answers. This can save your business time and resources, as your customers will be able to get the answers they need without having to wait for a response from a human customer service representative.
+    </span>
+      <br>
+      <br>
+      <span class="inView">
+Another reason why business owners should use ChatGPT is that it can help improve customer satisfaction. With ChatGPT, your customers will be able to get the answers they need quickly and easily. This can lead to happier customers, which can in turn lead to increased customer loyalty and repeat business.
+</span>
+<br>
+<br>
+<span class="inView">
+In addition to improving customer service and satisfaction, ChatGPT can also help your business save money. By using ChatGPT, you can reduce the number of customer service representatives you need to hire, which can save you money on labor costs. Furthermore, ChatGPT can handle a high volume of customer inquiries, which means that it can help you serve more customers with the same number of staff.
+</span>
+<br>
+<br>
+<span class="inView">
+Another benefit of using ChatGPT is that it can help you gain valuable insights about your customers. ChatGPT can track customer inquiries and provide you with data and analytics about the types of questions your customers are asking. This can help you identify areas where you can improve your customer service, as well as potential areas for new product or service development.
+</span>
+<br>
+<br>
+<span class="inView">
+In conclusion, business owners should use ChatGPT because it can improve customer service, satisfaction, and loyalty, save money on labor costs, and provide valuable insights about your customers. If you are a business owner looking to improve your customer service and save money, ChatGPT is definitely worth considering.
+</span>    
+</q>
+
+    <h2 class="py-8 inView">
+      Not bad for a bot, right? I'm sure you can see how this could be useful for a lot of people.
+      ChatGPT isn't only good for writing articles, it can also write code. Here's a basic example let's say we want to 
+      display a console.log("Hello ChatGPT") in our app using another language like Ruby or Python. We can use ChatGPT to write the code for us.
+    </h2>
+   
+
+    <q class="text-teal-400 inView">
+      Here is how you would write console.log("Hello ChatGPT") in Ruby:
+    </q>
+
+    <div class="mockup-code inView mt-8 inView">
+      <pre data-prefix=">" class="text-warning">        <code>
+      print("Hello ChatGPT")
+        </code>
+      </pre>
+    </div>
+
+    <q class="text-teal-400 mt-8 inView">
+      And here is how you would write it in Python:
+    </q>
+
+    <div class="mockup-code inView mt-8 inView">
+      <pre data-prefix=">" class="text-warning">        <code>
+      print("Hello ChatGPT")
+        </code>
+      </pre>
+    </div>
+
+    <q class="text-teal-400 mt-8 inView">
+      In both cases, this code will print the string "Hello ChatGPT" to the console.
+    </q>
+
+    <h2 class="py-8 inView">
+      You can do a lot more than a simple console.log("Hello ChatGPT") with ChatGPT. I've seen it fetch data from APIs,
+      create new elements in the DOM, render the data within those elements, add styling to those elements, and even add event listeners to those elements.
+      It's a great tool for anyone that wants to get started with web development but isn't sure where to start, or for anyone that
+      wants to know how to write specific code in a another language. I'm really excited to see what the future holds for ChatGPT. Let me know
+      what you think of it in by sending me a message on Twitter <a target="_blank" href="https://twitter.com/gmomedel">@GmoMedel</a>. 
+    </h2>
+
+  </div>
+    <div class="pt-32 astro-E5RB7OGA">
+  <section id="blog" class="flex scroll-mt-24  flex-col items-center gap-4 space-y-8 min-h-screen place-items-center justify-center">
+  <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl">
+    My Blog
+  </h2>
+  <ul class="min-h-screen gap-8 px-4 text-color-background w-full max-w-6xl grid md:grid-cols-2 lg:grid-cols-3 pb-32 astro-E5RB7OGA">
+    <a class="urlAnchor astro-E5RB7OGA" href="/blog/btn">
+          <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/ai-btns.e141bb1b.webp" alt="How to animate buttons with Tailwind CSS"></figure>
+            <div class="card-body astro-E5RB7OGA">
+              <h2 class="card-title astro-E5RB7OGA">How to animate buttons with Tailwind CSS</h2>
+            </div>
+          </li>
+        </a><a class="urlAnchor astro-E5RB7OGA" href="/blog/swagger">
+          <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/document.3f5e2773.webp" alt="Add Swagger API documentation to your Nest app"></figure>
+            <div class="card-body astro-E5RB7OGA">
+              <h2 class="card-title astro-E5RB7OGA">Add Swagger API documentation to your Nest app</h2>
+            </div>
+          </li>
+        </a><a class="urlAnchor astro-E5RB7OGA" href="/blog/observer">
+          <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/observer.8b75b01a.webp" alt="Using an Observer to animate elements on scroll"></figure>
+            <div class="card-body astro-E5RB7OGA">
+              <h2 class="card-title astro-E5RB7OGA">Using an Observer to animate elements on scroll</h2>
+            </div>
+          </li>
+        </a><a class="urlAnchor astro-E5RB7OGA" href="/blog/crud">
+          <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/nest-crud.471ef5d0.webp" alt="How to generate CRUD API endpoints with NestJS"></figure>
+            <div class="card-body astro-E5RB7OGA">
+              <h2 class="card-title astro-E5RB7OGA">How to generate CRUD API endpoints with NestJS</h2>
+            </div>
+          </li>
+        </a><a class="urlAnchor astro-E5RB7OGA" href="/blog/dali">
+          <li class="card lg:w-72 bg-base-100 shadow-[var(--color-primary)] transform shadow-lg inView hover:scale-105 transition-all duration-150 cursor-pointer mx-auto astro-E5RB7OGA">
+            <figure class="astro-E5RB7OGA"><img class="max-h-56 w-full astro-E5RB7OGA" src="/assets/ai.a7eecc22.webp" alt="Using OpenAI's DALL-E 2 AI to Generate Images"></figure>
+            <div class="card-body astro-E5RB7OGA">
+              <h2 class="card-title astro-E5RB7OGA">Using OpenAI&#39;s DALL-E 2AI to Generate Images</h2>
+            </div>
+          </li>
+        </a>
+
+  </ul>
+</section>
+</div>
+  
+
+    <footer class="category-box-inverse opacity-[85%] astro-EDQJ2XFX">
+  <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 astro-EDQJ2XFX">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 astro-EDQJ2XFX">
+      <div class="astro-EDQJ2XFX">
+        <h3 class="text-2xl font-bold category-box inline px-4 py-2 astro-EDQJ2XFX">Thanks for visiting</h3>
+        <p class="max-w-xs mt-4 text-sm category-box-inverse font-bold px-4 py-1 astro-EDQJ2XFX">
+          Check out my socials below!
+        </p>
+        <div class="flex inView mt-8 space-x-6 text-background-contrast astro-EDQJ2XFX">
+
+          <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href="https://www.instagram.com/medeldx/" target="_blank" rel="noreferrer">
+            <span class="sr-only astro-EDQJ2XFX"> Instagram </span>
+            <svg class="w-6 h-6 astro-EDQJ2XFX" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" class="astro-EDQJ2XFX"></path>
+            </svg>
+          </a>
+          <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href="https://twitter.com/gmomedel" target="_blank" rel="noreferrer">
+            <span class="sr-only astro-EDQJ2XFX"> Twitter </span>
+            <svg class="w-6 h-6 astro-EDQJ2XFX" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" class="astro-EDQJ2XFX"></path>
+            </svg>
+          </a>
+          <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href="https://github.com/M3D3L" target="_blank" rel="noreferrer">
+            <span class="sr-only astro-EDQJ2XFX"> GitHub </span>
+            <svg class="w-6 h-6 astro-EDQJ2XFX" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" class="astro-EDQJ2XFX"></path>
+            </svg>
+          </a>
+          <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href="https://medeldx.com/" target="_blank" rel="noreferrer">
+            <span class="sr-only astro-EDQJ2XFX">Website</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 astro-EDQJ2XFX">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" class="astro-EDQJ2XFX"></path>
+            </svg>
+            
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-3 astro-EDQJ2XFX">
+        <div class="astro-EDQJ2XFX">
+          <p class="text-teal-500 category-box-inverse px-4 py-1 inline font-bold astro-EDQJ2XFX">
+            Contact
+          </p>
+          <nav class="flex flex-col mt-6 space-y-2 text-sm text-background-contrast astro-EDQJ2XFX">
+            <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> CA +1 236-998-8668 </a>
+            <a class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> MX +52 644-457-3193 </a>
+            <a href="mailto: guillermoantoniomedel@gmail.com" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> guillermoantoniomedel<br class="astro-EDQJ2XFX">@gmail.com </a>
+          </nav>
+        </div>
+        <div class="astro-EDQJ2XFX">
+          <p class="font-bold text-teal-500 category-box-inverse px-4 py-1 inline astro-EDQJ2XFX">
+            Sections
+          </p>
+          <nav class="flex flex-col mt-6 space-y-2 text-sm text-background-contrast astro-EDQJ2XFX">
+            <a href="https://guillermomedel.com/#about" target="_blank" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> About </a>
+            <a href="https://guillermomedel.com/#skills" target="_blank" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> My Skills </a>
+            <a href="https://guillermomedel.com/#blog" target="_blank" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> Blog </a>
+            <a href="https://guillermomedel.com/#work" target="_blank" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> My Work </a>
+            <a href="https://guillermomedel.com/#contact" target="_blank" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> Contact </a>
+          </nav>
+        </div>
+
+        <div class="astro-EDQJ2XFX">
+          <p class="font-bold category-box-inverse px-4 py-1 inline astro-EDQJ2XFX">
+            Blog
+          </p>
+          <nav class="flex flex-col mt-6 space-y-2 text-sm text-background-contrast astro-EDQJ2XFX">
+            <a href="/blog/btn" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX"> Tailwind Buttons </a>
+            <a href="/blog/swagger" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> Swagger API </a>
+            <a href="/blog/crud" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> Nest.js CRUD </a>
+            <a href="/blog/observer" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> Observer Animations </a>
+            <a href="/blog/dali" class="hover:opacity-75 hover:translate-y-[-2px] astro-EDQJ2XFX" href> AI Pictures </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <p class="mt-8 text-xs text-[var(--color-background)] astro-EDQJ2XFX">
+      &copy; 2002 Guillermo Medel
+    </p>
+  </div>
+</footer>
+  <script defer>
+  //get all the elements with the class inView
+  //get all the elements with the class inView
+  const inView = document.querySelectorAll('.inView');
+  //add an observer to each element
+  inView.forEach(el => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        //if the element is in view, add the class
+        if (entry.intersectionRatio > 0) {
+          entry.target.classList.add('fadeUp');
+        } else {
+          entry.target.classList.remove('fadeUp');
+          entry.target.classList.add('opacity-0')
+        }
+      });
+    });
+    observer.observe(el);
+  });
+    
+  </script></body></html>
