@@ -1,0 +1,1 @@
+import"./chunks/theme-switcher.astro_astro_type_script_index_0_lang.e11a5e1f.js";const u=["Front End Dev \u{1F5A5}\uFE0F","Back End Dev \u{1F468}\u200D\u{1F4BB}","Shopify Dev \u{1F4B0}","Coffee-Guru \u2615","Space Nerd \u{1F680}"];let e=0;setInterval(()=>{e=(e+1)%u.length,document.getElementById("myJob").innerHTML=u[e]},1e3);
